@@ -1,13 +1,32 @@
-
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+html {
+  font-size: 18px;
+}
+
 header {
   background-image:url(./images/bg-mobile-light.jpg);
   background-repeat:no-repeat;
   background-size: cover;
-  min-height:12.5rem;
+  min-height:200px;
+}
+
+h1 {
+  color:white;
+  font-family: "Josefin Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+  margin-bottom:-9px
+}
+
+.title-toggle-container {
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+  padding:2rem 2rem 0rem 2rem;
 }
