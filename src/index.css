@@ -53,3 +53,7 @@ input[type="text"] {
 input[type="text"]::placeholder {
   color:#9495A5;
 }
+
+input:focus {
+  outline:none;
+}
