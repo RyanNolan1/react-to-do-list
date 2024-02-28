@@ -13,6 +13,10 @@ header {
   background-repeat:no-repeat;
   background-size: cover;
   min-height:200px;
+  padding:2rem;
+  display: flex;
+  flex-direction: column;
+  gap:2rem;
 }
 
 h1 {
@@ -28,5 +32,24 @@ h1 {
   display:flex;
   justify-content: space-between;
   align-items: center;
-  padding:2rem 2rem 0rem 2rem;
+}
+
+.add-task-container {
+  padding:0 1rem;
+  background-color: white;
+  border-radius:5px;
+  display:flex;
+  align-items: stretch;
+  gap:0.5rem;
+}
+
+input[type="text"] {
+  font-size:0.666rem;
+  border:none;
+  height:2.66666666667rem;
+  width:100%;
+}
+
+input[type="text"]::placeholder {
+  color:#9495A5;
 }
