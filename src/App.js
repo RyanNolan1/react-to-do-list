@@ -37,7 +37,7 @@ function Header() {
 function ToDoList() {
   return (
     <div>{ToDoListArray.map((item, index) => (
-      <Task task={item.task} key={index}></Task>
+      <Task task={item.task} id={index} key={index}></Task>
     ))}
     </div>
   )
@@ -81,7 +81,7 @@ function Task(props) {
         type="text"
         name="task-text"
       >{props.task}</p>
-      <img src={cross} alt="Cross Icon" className="cross" />
+      <img src={cross} alt="Cross Icon" className="cross" onClick={() => RemoveTask(props.id)} />
     </div>
   );
 }
@@ -103,4 +103,8 @@ function Filter() {
       <button>Completed</button>
     </div>
   );
+}
+
+function RemoveTask(index) {
+  console.log(index)
 }
