@@ -71,6 +71,13 @@ h1 {
 
 .task {
   border-bottom: 1px solid #e3e4f1;
+  justify-content:start;
+}
+
+.task p {
+  font-size: 0.66rem;
+  flex-grow:1;
+  color: #494C6B;
 }
 
 .count-clear {
@@ -145,7 +152,11 @@ input:focus {
     padding-top: 3rem;
   }
 
-  input[type="text"] {
+  .container {
+    min-height: 3.55rem;
+  }
+
+  .task p {
     font-size: 1rem;
   }
 
@@ -163,6 +174,6 @@ input:focus {
   }
 
   input[type="text"] {
-    font-size: 0.875rem;
+    font-size: 1rem;
   }
 }

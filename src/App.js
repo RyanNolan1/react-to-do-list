@@ -10,10 +10,11 @@ export default function App() {
 }
 
 let ToDoListArray = [
-  { task: "Clean out the refrigerator and dispose of any expired items." },
-  { task: "Organize paperwork and file important documents." },
-  { task: "Create a grocery list for the week and plan meals accordingly." },
-  { task: "Schedule a regular exercise routine for the upcoming week." },
+  { task: "Jog around the park 3x" },
+  { task: "10 minutes meditation" },
+  { task: "Read for 1 hour" },
+  { task: "Pick up groceries" },
+  { task: "Complete ToDo App on Frontend Mentor" }
 ];
 
 function Header() {
@@ -76,12 +77,11 @@ function Task(props) {
         ></input>
         <div className="custom-checkbox"></div>
       </label>
-      <input
+      <p
         id="task-text"
         type="text"
         name="ask-text"
-        placeholder={props.task}
-      ></input>
+      >{props.task}</p>
       <img src={cross} alt="Cross Icon" className="cross" />
     </div>
   );
