@@ -34,7 +34,7 @@ function Header() {
 function AddTask() {
   return (
     <div className="container add-task">
-      <input id="add-task-radio" type="radio" name="add-task-radio"></input>
+      <input id="add-task-checkbox" type="checkbox" name="add-task-checkbox"></input>
       <input
         id="add-task-text"
         type="text"
@@ -48,7 +48,7 @@ function AddTask() {
 function Task(props) {
   return (
     <div className="container task">
-      <input id="task-radio" type="radio" name="task-radio"></input>
+      <input id="task-checkbox" type="checkbox" name="task-checkbox"></input>
       <input
         id="task-text"
         type="text"
