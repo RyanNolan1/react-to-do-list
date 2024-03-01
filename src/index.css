@@ -16,7 +16,7 @@ header {
   padding: 2rem;
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 2em;
 }
 
 h1 {
@@ -32,6 +32,9 @@ h1 {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  max-width: 30rem;
+  margin: 0 auto;
+  width:100%;
 }
 
 .add-task-container {
@@ -41,6 +44,9 @@ h1 {
   display: flex;
   align-items: stretch;
   gap: 0.5rem;
+  max-width: 30rem;
+  margin: 0 auto;
+  width:100%;
 }
 
 input[type="text"] {
@@ -62,5 +68,11 @@ input:focus {
   header {
     height: 300px;
     background-image: url(./images/bg-desktop-light.jpg);
+    gap:3rem;
+    padding-top:3rem;
+  }
+
+  input[type="text"] {
+    font-size: 1rem;
   }
 }
