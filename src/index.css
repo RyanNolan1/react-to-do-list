@@ -131,7 +131,7 @@ input:focus {
 
 .custom-checkbox:hover {
   border-color: #00b3ee;
-  cursor:pointer;
+  cursor: pointer;
 }
 
 .checkbox:checked + .custom-checkbox {

@@ -56,8 +56,9 @@ function AddTask() {
 function Task(props) {
   return (
     <div className="container task">
-      <label htmlFor="add-task-checkbox" className="checkbox-label">
-        <input id="task-checkbox" type="checkbox" name="task-checkbox" className="custom-checkbox"></input>
+      <label htmlFor="task-checkbox" className="checkbox-label">
+        <input id="task-checkbox" type="checkbox" name="task-checkbox" className="checkbox"></input>
+        <div className="custom-checkbox" ></div>
       </label>
       <input
         id="task-text"
