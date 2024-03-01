@@ -53,58 +53,36 @@ h1 {
   width: 100%;
 }
 
-.add-task-container {
+.container {
   padding: 0 1rem;
   background-color: white;
   border-radius: 5px;
   display: flex;
-  align-items: stretch;
+  align-items: center;
   gap: 0.5rem;
   max-width: 30rem;
+  min-height: 2.66rem;
   margin: 0 auto;
-  margin-top: 2rem;
-  margin-bottom: 1rem;
   width: 100%;
   z-index: 2;
 }
 
-.task-container {
-  padding: 0 1rem;
-  background-color: white;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  max-width: 30rem;
-  margin: 0 auto;
-  width: 100%;
-  min-height: 2.66rem;
+.add-task {
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+.task {
   border-bottom: 1px solid #e3e4f1;
 }
 
-.count-clear-container {
-  padding: 0 1rem;
-  background-color: white;
-  display: flex;
-  gap: 0.5rem;
-  max-width: 30rem;
-  margin: 0 auto;
-  width: 100%;
-  min-height: 2.66rem;
+.count-clear {
   align-items: center;
   justify-content: space-between;
   border-radius: 0 0 5px 5px;
 }
 
-.filter-container {
-  padding: 0 1rem;
-  background-color: white;
-  display: flex;
-  gap: 0.5rem;
-  max-width: 30rem;
-  margin: 0 auto;
-  width: 100%;
-  min-height: 2.66rem;
-  align-items: center;
+.filter {
   justify-content: center;
   margin-top: 1rem;
   border-radius: 5px;

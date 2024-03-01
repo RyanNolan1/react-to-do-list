@@ -33,7 +33,7 @@ function Header() {
 
 function AddTask() {
   return (
-    <div className="add-task-container">
+    <div className="container add-task">
       <input id="add-task-radio" type="radio" name="add-task-radio"></input>
       <input
         id="add-task-text"
@@ -47,7 +47,7 @@ function AddTask() {
 
 function Task(props) {
   return (
-    <div className="task-container">
+    <div className="container task">
       <input id="task-radio" type="radio" name="task-radio"></input>
       <input
         id="task-text"
@@ -62,7 +62,7 @@ function Task(props) {
 
 function CountClear() {
     return (
-      <div className="count-clear-container">
+      <div className="container count-clear">
         <p className="item-count">0 Items Left</p>
         <button>Clear Completed</button>
       </div>
@@ -71,7 +71,7 @@ function CountClear() {
 
 function Filter() {
   return (
-    <div className="filter-container">
+    <div className="container filter">
       <button>All</button>
       <button>Active</button>
       <button>Completed</button>
