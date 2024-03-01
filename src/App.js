@@ -9,6 +9,13 @@ export default function App() {
   );
 }
 
+let ToDoListArray = [
+  { task: "Clean out the refrigerator and dispose of any expired items." },
+  { task: "Organize paperwork and file important documents." },
+  { task: "Create a grocery list for the week and plan meals accordingly." },
+  { task: "Schedule a regular exercise routine for the upcoming week." },
+];
+
 function Header() {
   return (
     <header>
@@ -18,17 +25,21 @@ function Header() {
       </div>
       <AddTask />
       <div className="task-shadow">
-        <Task task="Task 1" />
-        <Task task="Task 2" />
-        <Task task="Task 3" />
-        <Task task="Task 4" />
-        <Task task="Task 5" />
-        <Task task="Task 6" />
+        <ToDoList />
         <CountClear />
         <Filter />
       </div>
     </header>
   );
+}
+
+function ToDoList() {
+  return (
+    <div>{ToDoListArray.map((item) => (
+      <Task task={item.task}></Task>
+    ))}
+    </div>
+  )
 }
 
 function AddTask() {
@@ -57,8 +68,13 @@ function Task(props) {
   return (
     <div className="container task">
       <label htmlFor="task-checkbox" className="checkbox-label">
-        <input id="task-checkbox" type="checkbox" name="task-checkbox" className="checkbox"></input>
-        <div className="custom-checkbox" ></div>
+        <input
+          id="task-checkbox"
+          type="checkbox"
+          name="task-checkbox"
+          className="checkbox"
+        ></input>
+        <div className="custom-checkbox"></div>
       </label>
       <input
         id="task-text"
