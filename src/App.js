@@ -25,6 +25,7 @@ function Header() {
       <Task task="Task 5" />
       <Task task="Task 6" />
       <CountClear />
+      <Filter />
       </div>
     </header>
   );
@@ -66,4 +67,14 @@ function CountClear() {
         <button>Clear Completed</button>
       </div>
     )
+}
+
+function Filter() {
+  return (
+    <div className="filter-container">
+      <button>All</button>
+      <button>Active</button>
+      <button>Completed</button>
+    </div>
+  )
 }
