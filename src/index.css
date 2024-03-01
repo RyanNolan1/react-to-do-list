@@ -59,10 +59,9 @@ h1 {
 
 .title-toggle {
   justify-content: space-between;
-  background:none;
-  padding:0;
+  background: none;
+  padding: 0;
 }
-
 
 .add-task {
   border-radius: 5px;
@@ -103,7 +102,7 @@ input[type="text"]::placeholder {
 }
 
 input[type="checkbox"]:hover {
-  cursor:pointer;
+  cursor: pointer;
 }
 
 input:focus {
@@ -116,6 +115,27 @@ input:focus {
 
 .cross:hover {
   cursor: pointer;
+}
+
+.checkbox {
+  display: none;
+}
+
+.custom-checkbox {
+  width: 20px;
+  height: 20px;
+  border: 2px solid darkgray;
+  border-radius: 100px;
+  box-sizing: border-box;
+}
+
+.custom-checkbox:hover {
+  border-color: #00b3ee;
+  cursor:pointer;
+}
+
+.checkbox:checked + .custom-checkbox {
+  background-color: red;
 }
 
 @media (min-width: 768px) {

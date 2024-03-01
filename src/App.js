@@ -18,14 +18,14 @@ function Header() {
       </div>
       <AddTask />
       <div className="task-shadow">
-      <Task task="Task 1" />
-      <Task task="Task 2" />
-      <Task task="Task 3" />
-      <Task task="Task 4" />
-      <Task task="Task 5" />
-      <Task task="Task 6" />
-      <CountClear />
-      <Filter />
+        <Task task="Task 1" />
+        <Task task="Task 2" />
+        <Task task="Task 3" />
+        <Task task="Task 4" />
+        <Task task="Task 5" />
+        <Task task="Task 6" />
+        <CountClear />
+        <Filter />
       </div>
     </header>
   );
@@ -34,7 +34,15 @@ function Header() {
 function AddTask() {
   return (
     <div className="container add-task">
-      <input id="add-task-checkbox" type="checkbox" name="add-task-checkbox"></input>
+      <label htmlFor="add-task-checkbox">
+        <input
+          id="add-task-checkbox"
+          type="checkbox"
+          name="add-task-checkbox"
+          className="checkbox"
+        ></input>
+        <div className="custom-checkbox"></div>
+      </label>
       <input
         id="add-task-text"
         type="text"
@@ -48,7 +56,9 @@ function AddTask() {
 function Task(props) {
   return (
     <div className="container task">
-      <input id="task-checkbox" type="checkbox" name="task-checkbox"></input>
+      <label htmlFor="add-task-checkbox" className="checkbox-label">
+        <input id="task-checkbox" type="checkbox" name="task-checkbox" className="custom-checkbox"></input>
+      </label>
       <input
         id="task-text"
         type="text"
@@ -61,12 +71,12 @@ function Task(props) {
 }
 
 function CountClear() {
-    return (
-      <div className="container count-clear">
-        <p className="item-count">0 Items Left</p>
-        <button>Clear Completed</button>
-      </div>
-    )
+  return (
+    <div className="container count-clear">
+      <p className="item-count">0 Items Left</p>
+      <button>Clear Completed</button>
+    </div>
+  );
 }
 
 function Filter() {
@@ -76,5 +86,5 @@ function Filter() {
       <button>Active</button>
       <button>Completed</button>
     </div>
-  )
+  );
 }
