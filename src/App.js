@@ -1,4 +1,5 @@
 import moonIcon from "./images/icon-moon.svg";
+import cross from "./images/icon-cross.svg";
 
 export default function App() {
   return (
@@ -53,6 +54,7 @@ function Task(props) {
         name="ask-text"
         placeholder={props.task}
       ></input>
+      <img src={cross} alt="Cross Icon" className="cross" />
     </div>
   );
 }
