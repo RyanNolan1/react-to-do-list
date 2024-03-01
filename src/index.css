@@ -44,19 +44,9 @@ h1 {
   margin-bottom: -9px;
 }
 
-.title-toggle-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  max-width: 30rem;
-  margin: 0 auto;
-  width: 100%;
-}
-
 .container {
   padding: 0 1rem;
   background-color: white;
-  border-radius: 5px;
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -67,7 +57,15 @@ h1 {
   z-index: 2;
 }
 
+.title-toggle {
+  justify-content: space-between;
+  background:none;
+  padding:0;
+}
+
+
 .add-task {
+  border-radius: 5px;
   margin-top: 2rem;
   margin-bottom: 1rem;
 }
@@ -127,7 +125,7 @@ input:focus {
     font-size: 1rem;
   }
 
-  .add-task-container {
+  .add-task {
     margin-top: 3rem;
     margin-bottom: 1.5rem;
   }

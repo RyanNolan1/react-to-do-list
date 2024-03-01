@@ -12,7 +12,7 @@ export default function App() {
 function Header() {
   return (
     <header>
-      <div className="title-toggle-container">
+      <div className="container title-toggle">
         <h1>T O D O</h1>
         <img src={moonIcon} alt="Moon Icon" />
       </div>
