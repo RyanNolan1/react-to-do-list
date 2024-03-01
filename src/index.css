@@ -12,11 +12,10 @@ header {
   background-image: url(./images/bg-mobile-light.jpg);
   background-repeat: no-repeat;
   background-size: cover;
-  min-height: 200px;
+  height: 200px;
   padding: 2rem;
   display: flex;
   flex-direction: column;
-  gap: 2em;
 }
 
 h1 {
@@ -34,7 +33,7 @@ h1 {
   align-items: center;
   max-width: 30rem;
   margin: 0 auto;
-  width:100%;
+  width: 100%;
 }
 
 .add-task-container {
@@ -46,7 +45,21 @@ h1 {
   gap: 0.5rem;
   max-width: 30rem;
   margin: 0 auto;
-  width:100%;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  width: 100%;
+}
+
+.task-container {
+  padding: 0 1rem;
+  background-color: white;
+  display: flex;
+  align-items: stretch;
+  gap: 0.5rem;
+  max-width: 30rem;
+  margin: 0 auto;
+  width: 100%;
+  border-bottom: 1px solid #e3e4f1;
 }
 
 input[type="text"] {
@@ -68,11 +81,15 @@ input:focus {
   header {
     height: 300px;
     background-image: url(./images/bg-desktop-light.jpg);
-    gap:3rem;
-    padding-top:3rem;
+    padding-top: 3rem;
   }
 
   input[type="text"] {
     font-size: 1rem;
+  }
+
+  .add-task-container {
+    margin-top: 3rem;
+    margin-bottom: 1.5rem;
   }
 }
