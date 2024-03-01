@@ -11,6 +11,17 @@ html {
   font-size: 18px;
 }
 
+body {
+  background: hsl(0, 0%, 98%);
+}
+
+button {
+  border:none;
+  background:none;
+  font-size: 0.66rem;
+  color: #9495A5;
+}
+
 header {
   background-image: url(./images/bg-mobile-light.jpg);
   background-repeat: no-repeat;
@@ -50,6 +61,7 @@ h1 {
   margin-top: 2rem;
   margin-bottom: 1rem;
   width: 100%;
+  z-index:2;
 }
 
 .task-container {
@@ -64,11 +76,29 @@ h1 {
   border-bottom: 1px solid #e3e4f1;
 }
 
-input[type="text"] {
-  font-size: 0.666rem;
-  border: none;
-  height: 2.66666666667rem;
+.count-clear-container {
+  padding: 0 1rem;
+  background-color: white;
+  display: flex;
+  gap: 0.5rem;
+  max-width: 30rem;
+  margin: 0 auto;
   width: 100%;
+  min-height: 2.66rem;
+  align-items: center;
+  justify-content: space-between;
+}
+
+input[type="text"] {
+  font-size: 0.66rem;
+  border: none;
+  height: 2.66rem;
+  width: 100%;
+}
+
+.item-count {
+  font-size: 0.66rem;
+  color: #9495A5;
 }
 
 input[type="text"]::placeholder {
@@ -77,6 +107,10 @@ input[type="text"]::placeholder {
 
 input:focus {
   outline: none;
+}
+
+.task-shadow {
+  filter: drop-shadow(0px 0px 20px hsl(233, 11%, 84%));
 }
 
 @media (min-width: 768px) {
@@ -93,5 +127,17 @@ input:focus {
   .add-task-container {
     margin-top: 3rem;
     margin-bottom: 1.5rem;
+  }
+
+  .item-count {
+    font-size: 0.875rem;
+  }
+
+  button {
+    font-size:0.875rem;
+  }
+
+  input[type="text"] {
+    font-size: 0.875rem;
   }
 }

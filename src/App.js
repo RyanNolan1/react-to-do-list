@@ -16,12 +16,15 @@ function Header() {
         <img src={moonIcon} alt="Moon Icon" />
       </div>
       <AddTask />
+      <div className="task-shadow">
       <Task task="Task 1" />
       <Task task="Task 2" />
       <Task task="Task 3" />
       <Task task="Task 4" />
       <Task task="Task 5" />
       <Task task="Task 6" />
+      <CountClear />
+      </div>
     </header>
   );
 }
@@ -52,4 +55,13 @@ function Task(props) {
       ></input>
     </div>
   );
+}
+
+function CountClear() {
+    return (
+      <div className="count-clear-container">
+        <p className="item-count">0 Items Left</p>
+        <button>Clear Completed</button>
+      </div>
+    )
 }
