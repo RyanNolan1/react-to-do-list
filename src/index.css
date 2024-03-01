@@ -9,51 +9,58 @@ html {
 }
 
 header {
-  background-image:url(./images/bg-mobile-light.jpg);
-  background-repeat:no-repeat;
+  background-image: url(./images/bg-mobile-light.jpg);
+  background-repeat: no-repeat;
   background-size: cover;
-  min-height:200px;
-  padding:2rem;
+  min-height: 200px;
+  padding: 2rem;
   display: flex;
   flex-direction: column;
-  gap:2rem;
+  gap: 2rem;
 }
 
 h1 {
-  color:white;
+  color: white;
   font-family: "Josefin Sans", sans-serif;
   font-optical-sizing: auto;
   font-weight: 700;
   font-style: normal;
-  margin-bottom:-9px
+  margin-bottom: -9px;
 }
 
 .title-toggle-container {
-  display:flex;
+  display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
 .add-task-container {
-  padding:0 1rem;
+  padding: 0 1rem;
   background-color: white;
-  border-radius:5px;
-  display:flex;
+  border-radius: 5px;
+  display: flex;
   align-items: stretch;
-  gap:0.5rem;
+  gap: 0.5rem;
 }
 
 input[type="text"] {
-  font-size:0.666rem;
-  border:none;
-  height:2.66666666667rem;
-  width:100%;
+  font-size: 0.666rem;
+  border: none;
+  height: 2.66666666667rem;
+  width: 100%;
 }
 
 input[type="text"]::placeholder {
-  color:#9495A5;
+  color: #9495a5;
 }
 
 input:focus {
-  outline:none;
+  outline: none;
+}
+
+@media (min-width: 768px) {
+  header {
+    height: 300px;
+    background-image: url(./images/bg-desktop-light.jpg);
+  }
 }
