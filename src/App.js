@@ -36,8 +36,8 @@ function Header() {
 
 function ToDoList() {
   return (
-    <div>{ToDoListArray.map((item) => (
-      <Task task={item.task}></Task>
+    <div>{ToDoListArray.map((item, index) => (
+      <Task task={item.task} key={index}></Task>
     ))}
     </div>
   )
@@ -67,10 +67,10 @@ function AddTask() {
 
 function Task(props) {
   return (
-    <div className="container task">
-      <label htmlFor="task-checkbox" className="checkbox-label">
+    <div className="container task" key={props.index}>
+      <label htmlFor={props.index} className="checkbox-label">
         <input
-          id="task-checkbox"
+          id={props.index}
           type="checkbox"
           name="task-checkbox"
           className="checkbox"
@@ -78,9 +78,8 @@ function Task(props) {
         <div className="custom-checkbox"></div>
       </label>
       <p
-        id="task-text"
         type="text"
-        name="ask-text"
+        name="task-text"
       >{props.task}</p>
       <img src={cross} alt="Cross Icon" className="cross" />
     </div>
