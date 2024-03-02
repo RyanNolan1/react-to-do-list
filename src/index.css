@@ -31,7 +31,7 @@ header {
   background-repeat: no-repeat;
   background-size: cover;
   height: 200px;
-  padding: 2rem;
+  padding: 2rem 1rem;
   display: flex;
   flex-direction: column;
 }
@@ -65,8 +65,8 @@ h1 {
 
 .add-task {
   border-radius: 5px;
-  margin-top: 2rem;
   margin-bottom: 1rem;
+  margin-top:-4rem;
 }
 
 .task {
@@ -116,8 +116,9 @@ input:focus {
   outline: none;
 }
 
-.task-shadow {
+.tasks-container {
   filter: drop-shadow(0px 0px 20px hsl(233, 11%, 84%));
+  padding:0 1rem;
 }
 
 .cross:hover {
@@ -161,7 +162,7 @@ input:focus {
   }
 
   .add-task {
-    margin-top: 3rem;
+    margin-top:-8rem;
     margin-bottom: 1.5rem;
   }
 

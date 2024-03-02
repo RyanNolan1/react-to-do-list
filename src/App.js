@@ -12,7 +12,7 @@ export default function App() {
   return (
     <div className="app">
       <Header />
-      <div className="task-shadow">
+      <div className="tasks-container">
         <AddTask onAddItems={ handleAddItems } />
         <ToDoList items={items} />
         <CountClear />
