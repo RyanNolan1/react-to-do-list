@@ -3,25 +3,24 @@ import cross from "./images/icon-cross.svg";
 import { useState } from "react";
 
 export default function App() {
+  const [items, setItems] = useState([]);
+
+  function handleAddItems(item) {
+    setItems((items) => [...items, item]);
+  }
+
   return (
     <div className="app">
       <Header />
       <div className="task-shadow">
-        <ToDoList />
+        <AddTask onAddItems={ handleAddItems } />
+        <ToDoList items={items} />
         <CountClear />
         <Filter />
       </div>
     </div>
   );
 }
-
-let ToDoListArray = [
-  { task: "Jog around the park 3x" },
-  { task: "10 minutes meditation" },
-  { task: "Read for 1 hour" },
-  { task: "Pick up groceries" },
-  { task: "Complete ToDo App on Frontend Mentor" },
-];
 
 function Header() {
   return (
@@ -30,27 +29,31 @@ function Header() {
         <h1>T O D O</h1>
         <img src={moonIcon} alt="Moon Icon" />
       </div>
-      <AddTask />
+
     </header>
   );
 }
 
-function ToDoList() {
+function ToDoList({ items }) {
   return (
     <div>
-      {ToDoListArray.map((item, index) => (
+      {items.map((item, index) => (
         <Task task={item.task} id={index} key={index}></Task>
       ))}
     </div>
   );
 }
 
-function AddTask() {
-  const [description, setDescription] = useState("");
+function AddTask({ onAddItems }) {
+  const [task, setTask] = useState("");
 
   function handleSubmit(e) {
     e.preventDefault();
-    console.log(description);
+
+    const newItem = { task };
+    onAddItems(newItem);
+    console.log(newItem);
+    setTask("");
   }
 
   return (
@@ -69,9 +72,9 @@ function AddTask() {
         type="text"
         name="add-task-text"
         placeholder="Create a new todo…"
-        value={description}
+        value={task}
         onChange={(e) => {
-          setDescription(e.target.value);
+          setTask(e.target.value);
         }}
       />
     </form>
