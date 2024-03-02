@@ -50,10 +50,12 @@ function AddTask({ onAddItems }) {
   function handleSubmit(e) {
     e.preventDefault();
 
-    const newItem = { task };
-    onAddItems(newItem);
-    console.log(newItem);
-    setTask("");
+    if (task) {
+      const newItem = { task };
+      onAddItems(newItem);
+      console.log(newItem);
+      setTask("");
+    }
   }
 
   return (
