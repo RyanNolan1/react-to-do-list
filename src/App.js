@@ -15,7 +15,7 @@ export default function App() {
       <div className="tasks-container">
         <AddTask onAddItems={ handleAddItems } />
         <ToDoList items={items} />
-        <CountClear />
+        <CountClear itemCount={items.length} />
         <Filter />
       </div>
     </div>
@@ -108,10 +108,10 @@ function Task(props) {
   );
 }
 
-function CountClear() {
+function CountClear({ itemCount }) {
   return (
     <div className="container count-clear">
-      <p className="item-count">0 Items Left</p>
+      <p className="item-count">{ itemCount } Items Left</p>
       <button>Clear Completed</button>
     </div>
   );
