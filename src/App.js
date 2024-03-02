@@ -1,6 +1,6 @@
 import moonIcon from "./images/icon-moon.svg";
 import cross from "./images/icon-cross.svg";
-import { useState } from 'react';
+import { useState } from "react";
 
 export default function App() {
   return (
@@ -20,7 +20,7 @@ let ToDoListArray = [
   { task: "10 minutes meditation" },
   { task: "Read for 1 hour" },
   { task: "Pick up groceries" },
-  { task: "Complete ToDo App on Frontend Mentor" }
+  { task: "Complete ToDo App on Frontend Mentor" },
 ];
 
 function Header() {
@@ -37,35 +37,43 @@ function Header() {
 
 function ToDoList() {
   return (
-    <div>{ToDoListArray.map((item, index) => (
-      <Task task={item.task} id={index} key={index}></Task>
-    ))}
+    <div>
+      {ToDoListArray.map((item, index) => (
+        <Task task={item.task} id={index} key={index}></Task>
+      ))}
     </div>
-  )
+  );
 }
 
 function AddTask() {
-  function handleSubmit(event) {
-    event.preventDefault();
+  const [description, setDescription] = useState("");
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    console.log(description);
   }
 
   return (
-    <form className="container add-task" onSubmit={ handleSubmit }>
+    <form className="container add-task" onSubmit={handleSubmit}>
       <label htmlFor="add-task-checkbox">
         <input
           id="add-task-checkbox"
           type="checkbox"
           name="add-task-checkbox"
           className="checkbox"
-        ></input>
-        <div className="custom-checkbox" type="submit"></div>
+        />
+        <div className="custom-checkbox"></div>
       </label>
       <input
         id="add-task-text"
         type="text"
         name="add-task-text"
         placeholder="Create a new todo…"
-      ></input>
+        value={description}
+        onChange={(e) => {
+          setDescription(e.target.value);
+        }}
+      />
     </form>
   );
 }
@@ -79,14 +87,18 @@ function Task(props) {
           type="checkbox"
           name="task-checkbox"
           className="checkbox"
-        ></input>
+        />
         <div className="custom-checkbox"></div>
       </label>
-      <p
-        type="text"
-        name="task-text"
-      >{props.task}</p>
-      <img src={cross} alt="Cross Icon" className="cross" onClick={() => RemoveTask(props.id)} />
+      <p type="text" name="task-text">
+        {props.task}
+      </p>
+      <img
+        src={cross}
+        alt="Cross Icon"
+        className="cross"
+        onClick={() => RemoveTask(props.id)}
+      />
     </div>
   );
 }
@@ -111,5 +123,5 @@ function Filter() {
 }
 
 function RemoveTask(index) {
-  console.log(index)
+  console.log(index);
 }
