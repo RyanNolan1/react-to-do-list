@@ -1,10 +1,16 @@
 import moonIcon from "./images/icon-moon.svg";
 import cross from "./images/icon-cross.svg";
+import { useState } from 'react';
 
 export default function App() {
   return (
     <div className="app">
       <Header />
+      <div className="task-shadow">
+        <ToDoList />
+        <CountClear />
+        <Filter />
+      </div>
     </div>
   );
 }
@@ -25,11 +31,6 @@ function Header() {
         <img src={moonIcon} alt="Moon Icon" />
       </div>
       <AddTask />
-      <div className="task-shadow">
-        <ToDoList />
-        <CountClear />
-        <Filter />
-      </div>
     </header>
   );
 }
@@ -44,8 +45,12 @@ function ToDoList() {
 }
 
 function AddTask() {
+  function handleSubmit(event) {
+    event.preventDefault();
+  }
+
   return (
-    <div className="container add-task">
+    <form className="container add-task" onSubmit={ handleSubmit }>
       <label htmlFor="add-task-checkbox">
         <input
           id="add-task-checkbox"
@@ -53,7 +58,7 @@ function AddTask() {
           name="add-task-checkbox"
           className="checkbox"
         ></input>
-        <div className="custom-checkbox"></div>
+        <div className="custom-checkbox" type="submit"></div>
       </label>
       <input
         id="add-task-text"
@@ -61,7 +66,7 @@ function AddTask() {
         name="add-task-text"
         placeholder="Create a new todo…"
       ></input>
-    </div>
+    </form>
   );
 }
 
