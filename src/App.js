@@ -13,7 +13,7 @@ export default function App() {
     <div className="app">
       <Header />
       <div className="tasks-container">
-        <AddTask onAddItems={ handleAddItems } />
+        <AddTask onAddItems={handleAddItems} />
         <ToDoList items={items} />
         <CountClear itemCount={items.length} />
         <Filter />
@@ -29,7 +29,6 @@ function Header() {
         <h1>T O D O</h1>
         <img src={moonIcon} alt="Moon Icon" />
       </div>
-
     </header>
   );
 }
@@ -38,7 +37,7 @@ function ToDoList({ items }) {
   return (
     <div>
       {items.map((item, index) => (
-        <Task task={item.task} id={index} key={index}></Task>
+        <Task item={item} task={item.task} id={index} key={index}></Task>
       ))}
     </div>
   );
@@ -46,13 +45,12 @@ function ToDoList({ items }) {
 
 function AddTask({ onAddItems }) {
   const [task, setTask] = useState("");
-  const [status, setStatus] = useState("Active");
 
   function handleSubmit(e) {
     e.preventDefault();
 
     if (task) {
-      const newItem = { task, status };
+      const newItem = { task, status: "Active" };
       onAddItems(newItem);
       console.log(newItem);
       setTask("");
@@ -84,26 +82,35 @@ function AddTask({ onAddItems }) {
   );
 }
 
-function Task(props) {
+function Task({ item }) {
+  function handleStatus() {
+    if (item.status === "Active") {
+      item.status = "Completed";
+    } else {
+      item.status = "Active;";
+    }
+  }
+
   return (
-    <div className="container task" key={props.index}>
-      <label htmlFor={props.index} className="checkbox-label">
+    <div className="container task" key={item.index}>
+      <label htmlFor={item.index} className="checkbox-label">
         <input
-          id={props.index}
+          id={item.index}
           type="checkbox"
           name="task-checkbox"
           className="checkbox"
+          onClick={() => handleStatus()}
         />
         <div className="custom-checkbox"></div>
       </label>
       <p type="text" name="task-text">
-        {props.task}
+        {item.task}
       </p>
       <img
         src={cross}
         alt="Cross Icon"
         className="cross"
-        onClick={() => RemoveTask(props.id)}
+        onClick={() => RemoveTask(item.id)}
       />
     </div>
   );
@@ -112,7 +119,7 @@ function Task(props) {
 function CountClear({ itemCount }) {
   return (
     <div className="container count-clear">
-      <p className="item-count">{ itemCount } Items Left</p>
+      <p className="item-count">{itemCount} Items Left</p>
       <button>Clear Completed</button>
     </div>
   );
