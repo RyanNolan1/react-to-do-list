@@ -83,12 +83,16 @@ function AddTask({ onAddItems }) {
 }
 
 function Task({ item }) {
-  function handleStatus() {
-    if (item.status === "Active") {
-      item.status = "Completed";
-    } else {
-      item.status = "Active;";
-    }
+  const [status, setStatus] = useState({
+    task : item.task,
+    status : 'Active'
+  })
+
+  const updateStatus = () => {
+    setStatus({
+      ...status,
+      status: 'Completed'
+    });
   }
 
   return (
@@ -99,7 +103,7 @@ function Task({ item }) {
           type="checkbox"
           name="task-checkbox"
           className="checkbox"
-          onClick={() => handleStatus()}
+          onClick={() => updateStatus()}
         />
         <div className="custom-checkbox"></div>
       </label>
