@@ -84,16 +84,16 @@ function AddTask({ onAddItems }) {
 
 function Task({ item }) {
   const [status, setStatus] = useState({
-    task : item.task,
-    status : 'Active'
-  })
+    task: item.task,
+    status: item.status,
+  });
 
   const updateStatus = () => {
     setStatus({
       ...status,
-      status: 'Completed'
+      status: status.status === "Active" ? "Completed" : "Active",
     });
-  }
+  };
 
   return (
     <div className="container task" key={item.index}>
