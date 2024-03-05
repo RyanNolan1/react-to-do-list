@@ -47,14 +47,16 @@ function ToDoList({ items }) {
 
 function AddTask({ onAddItems }) {
   const [task, setTask] = useState("");
+  const [id, setId] = useState(0);
 
   function handleSubmit(e) {
     e.preventDefault();
 
     if (task) {
-      const newItem = { task, status: "Active" };
+      const newItem = { id:id, task, status: "Active" };
       onAddItems(newItem);
       setTask("");
+      setId(id+1)
     }
   }
 
