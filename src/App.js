@@ -9,14 +9,17 @@ export default function App() {
     setItems((items) => [...items, item]);
   }
 
-  console.log(items)
+  function handleRemoveTask(id) {
+    const filteredArray = items.filter((item) => item.id !== id);
+    setItems(filteredArray);
+  }
 
   return (
     <div className="app">
       <Header />
       <div className="tasks-container">
-        <AddTask onAddItems={handleAddItems} />
-        <ToDoList items={items} />
+        <AddTask  onAddItems={handleAddItems} />
+        <ToDoList handleRemoveTask={ handleRemoveTask } items={items} />
         <CountClear itemCount={items.length} />
         <Filter />
       </div>
@@ -35,11 +38,12 @@ function Header() {
   );
 }
 
-function ToDoList({ items }) {
+function ToDoList({ items, handleRemoveTask }) {
+
   return (
     <div>
       {items.map((item, index) => (
-        <Task item={item} task={item.task} id={index} key={index}></Task>
+        <Task onRemoveTask={handleRemoveTask} item={item} task={item.task} id={index} key={item.id}></Task>
       ))}
     </div>
   );
@@ -53,10 +57,10 @@ function AddTask({ onAddItems }) {
     e.preventDefault();
 
     if (task) {
-      const newItem = { id:id, task, status: "Active" };
+      const newItem = { id: id, task, status: "Active" };
       onAddItems(newItem);
       setTask("");
-      setId(id+1)
+      setId(id + 1);
     }
   }
 
@@ -85,7 +89,7 @@ function AddTask({ onAddItems }) {
   );
 }
 
-function Task({ item }) {
+function Task({ item, onRemoveTask }) {
   function updateStatus() {
     item.status = item.status === "Active" ? "Completed" : "Active";
   }
@@ -109,7 +113,7 @@ function Task({ item }) {
         src={cross}
         alt="Cross Icon"
         className="cross"
-        onClick={() => RemoveTask(item.id)}
+        onClick={() => onRemoveTask(item.id)}
       />
     </div>
   );
@@ -132,7 +136,4 @@ function Filter() {
       <button>Completed</button>
     </div>
   );
-}
-
-function RemoveTask(index) {
 }
