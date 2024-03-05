@@ -9,6 +9,8 @@ export default function App() {
     setItems((items) => [...items, item]);
   }
 
+  console.log(items)
+
   return (
     <div className="app">
       <Header />
@@ -52,7 +54,6 @@ function AddTask({ onAddItems }) {
     if (task) {
       const newItem = { task, status: "Active" };
       onAddItems(newItem);
-      console.log(newItem);
       setTask("");
     }
   }
@@ -83,17 +84,9 @@ function AddTask({ onAddItems }) {
 }
 
 function Task({ item }) {
-  const [status, setStatus] = useState({
-    task: item.task,
-    status: item.status,
-  });
-
-  const updateStatus = () => {
-    setStatus({
-      ...status,
-      status: status.status === "Active" ? "Completed" : "Active",
-    });
-  };
+  function updateStatus() {
+    item.status = item.status === "Active" ? "Completed" : "Active";
+  }
 
   return (
     <div className="container task" key={item.index}>
@@ -140,5 +133,4 @@ function Filter() {
 }
 
 function RemoveTask(index) {
-  console.log(index);
 }
