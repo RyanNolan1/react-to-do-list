@@ -14,6 +14,11 @@ export default function App() {
     setItems(filteredArray);
   }
 
+  function handleFilter(status) {
+    const filteredArray = items.filter((item) => item.status === status);
+    setItems(filteredArray);
+  }
+
   return (
     <div className="app">
       <Header />
@@ -21,7 +26,7 @@ export default function App() {
         <AddTask  onAddItems={handleAddItems} />
         <ToDoList handleRemoveTask={ handleRemoveTask } items={items} />
         <CountClear itemCount={items.length} />
-        <Filter />
+        <Filter onFilterItems={handleFilter} />
       </div>
     </div>
   );
@@ -128,12 +133,12 @@ function CountClear({ itemCount }) {
   );
 }
 
-function Filter() {
+function Filter({ onFilterItems }) {
   return (
     <div className="container filter">
-      <button>All</button>
-      <button>Active</button>
-      <button>Completed</button>
+      <button onClick={() => onFilterItems("Active" || "Completed")}>All</button>
+      <button onClick={() => onFilterItems("Active")}>Active</button>
+      <button onClick={() => onFilterItems("Completed")}>Completed</button>
     </div>
   );
 }
