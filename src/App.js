@@ -1,10 +1,52 @@
 import moonIcon from "./images/icon-moon.svg";
 import cross from "./images/icon-cross.svg";
+import { useState, useEffect } from "react";
 
 export default function App() {
+  const [items, setItems] = useState([]);
+  const [filteredItems, setFilteredItems] = useState(items);
+
+  console.log(items)
+
+  useEffect(() => {
+    setFilteredItems(items);
+  }, [items]);
+
+  function handleAddItems(item) {
+    setItems((items) => [...items, item]);
+    setFilteredItems((items) => [...items, item]);
+  }
+
+  function handleRemoveTask(id) {
+    const filteredArray = items.filter((item) => item.id !== id);
+    setItems(filteredArray);
+    setFilteredItems(filteredArray);
+  }
+
+  function handleFilter(status) {
+    if (status) {
+      const filteredArray = items.filter((item) => item.status === status);
+      setFilteredItems(filteredArray);
+    } else {
+      setFilteredItems(items);
+    }
+  }
+
+  function removeCompletedTasks() {
+    const filteredArray = items.filter((item) => item.status !== "Complete")
+    setItems(filteredArray);
+    setFilteredItems(filteredArray);
+  }
+
   return (
     <div className="app">
       <Header />
+      <div className="tasks-container">
+        <AddTask onAddItems={handleAddItems} />
+        <ToDoList handleRemoveTask={handleRemoveTask} items={filteredItems} />
+        <CountClear onRemoveCompletedTasks={removeCompletedTasks} itemCount={items.length} />
+        <Filter onFilterItems={handleFilter} />
+      </div>
     </div>
   );
 }
@@ -16,31 +58,50 @@ function Header() {
         <h1>T O D O</h1>
         <img src={moonIcon} alt="Moon Icon" />
       </div>
-      <AddTask />
-      <div className="task-shadow">
-        <Task task="Task 1" />
-        <Task task="Task 2" />
-        <Task task="Task 3" />
-        <Task task="Task 4" />
-        <Task task="Task 5" />
-        <Task task="Task 6" />
-        <CountClear />
-        <Filter />
-      </div>
     </header>
   );
 }
 
-function AddTask() {
+function ToDoList({ items, handleRemoveTask }) {
   return (
-    <div className="container add-task">
+    <div>
+      {items.map((item, index) => (
+        <Task
+          onRemoveTask={handleRemoveTask}
+          item={item}
+          task={item.task}
+          id={index}
+          key={item.id}
+        ></Task>
+      ))}
+    </div>
+  );
+}
+
+function AddTask({ onAddItems }) {
+  const [task, setTask] = useState("");
+  const [id, setId] = useState(0);
+
+  function handleSubmit(e) {
+    e.preventDefault();
+
+    if (task) {
+      const newItem = { id: id, task, status: "Active", checked:false };
+      onAddItems(newItem);
+      setTask("");
+      setId(id + 1);
+    }
+  }
+
+  return (
+    <form className="container add-task" onSubmit={handleSubmit}>
       <label htmlFor="add-task-checkbox">
         <input
           id="add-task-checkbox"
           type="checkbox"
           name="add-task-checkbox"
           className="checkbox"
-        ></input>
+        />
         <div className="custom-checkbox"></div>
       </label>
       <input
@@ -48,44 +109,61 @@ function AddTask() {
         type="text"
         name="add-task-text"
         placeholder="Create a new todo…"
-      ></input>
-    </div>
+        value={task}
+        onChange={(e) => {
+          setTask(e.target.value);
+        }}
+      />
+    </form>
   );
 }
 
-function Task(props) {
+function Task({ item, onRemoveTask }) {
+  function handleCheck() {
+    item.checked = item.checked === false ? true : false;
+    item.status = item.check === false ? "Active" : "Complete";
+  }
+
   return (
-    <div className="container task">
-      <label htmlFor="task-checkbox" className="checkbox-label">
-        <input id="task-checkbox" type="checkbox" name="task-checkbox" className="checkbox"></input>
-        <div className="custom-checkbox" ></div>
+    <div className="container task" key={item.index}>
+      <label htmlFor={item.index} className="checkbox-label">
+        <input
+          id={item.index}
+          type="checkbox"
+          name="task-checkbox"
+          className="checkbox"
+          onClick={() => handleCheck()}
+        />
+        <div className="custom-checkbox"></div>
       </label>
-      <input
-        id="task-text"
-        type="text"
-        name="ask-text"
-        placeholder={props.task}
-      ></input>
-      <img src={cross} alt="Cross Icon" className="cross" />
+      <p type="text" name="task-text">
+        {item.task}
+      </p>
+      <img
+        src={cross}
+        alt="Cross Icon"
+        className="cross"
+        onClick={() => onRemoveTask(item.id)}
+      />
     </div>
   );
 }
 
-function CountClear() {
+function CountClear({ itemCount, onRemoveCompletedTasks }) {
   return (
     <div className="container count-clear">
-      <p className="item-count">0 Items Left</p>
-      <button>Clear Completed</button>
+      <p className="item-count">{itemCount} Items Left</p>
+      <button onClick={ onRemoveCompletedTasks }>Clear Completed</button>
     </div>
   );
 }
 
-function Filter() {
+function Filter({ onFilterItems }) {
   return (
     <div className="container filter">
-      <button>All</button>
-      <button>Active</button>
-      <button>Completed</button>
+      <button onClick={() => onFilterItems()}>All</button>
+      <button onClick={() => onFilterItems("Active")}>Active</button>
+      <button onClick={() => onFilterItems("Complete")}>Completed</button>
     </div>
   );
 }
