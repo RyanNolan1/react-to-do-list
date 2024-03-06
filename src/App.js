@@ -12,7 +12,7 @@ export default function App() {
 
   function handleAddItems(item) {
     setItems((items) => [...items, item]);
-    setFilteredItems([...items]);
+    setFilteredItems((items) => [...items, item]);
   }
 
   function handleRemoveTask(id) {
