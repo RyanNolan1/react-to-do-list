@@ -6,15 +6,14 @@ export default function App() {
   const [items, setItems] = useState([]);
   const [filteredItems, setFilteredItems] = useState(items);
 
-  console.log(filteredItems)
-
   function handleAddItems(item) {
     setItems((items) => [...items, item]);
+    setFilteredItems([...items]);
   }
 
   function handleRemoveTask(id) {
     const filteredArray = items.filter((item) => item.id !== id);
-    setItems(filteredArray);
+    setFilteredItems(filteredArray);
   }
 
   function handleFilter(status) {
@@ -26,10 +25,13 @@ export default function App() {
     <div className="app">
       <Header />
       <div className="tasks-container">
-        <AddTask  onAddItems={ handleAddItems } />
-        <ToDoList handleRemoveTask={ handleRemoveTask } items={ items } />
-        <CountClear itemCount={ items.length } />
-        <Filter onFilterItems={ handleFilter } />
+        <AddTask onAddItems={handleAddItems} />
+        <ToDoList
+          handleRemoveTask={handleRemoveTask}
+          items={filteredItems}
+        />
+        <CountClear itemCount={items.length} />
+        <Filter onFilterItems={handleFilter} />
       </div>
     </div>
   );
@@ -47,11 +49,16 @@ function Header() {
 }
 
 function ToDoList({ items, handleRemoveTask }) {
-
   return (
     <div>
       {items.map((item, index) => (
-        <Task onRemoveTask={handleRemoveTask} item={item} task={item.task} id={index} key={item.id}></Task>
+        <Task
+          onRemoveTask={handleRemoveTask}
+          item={item}
+          task={item.task}
+          id={index}
+          key={item.id}
+        ></Task>
       ))}
     </div>
   );
@@ -139,7 +146,9 @@ function CountClear({ itemCount }) {
 function Filter({ onFilterItems }) {
   return (
     <div className="container filter">
-      <button onClick={() => onFilterItems("Active" || "Completed")}>All</button>
+      <button onClick={() => onFilterItems("Active" || "Completed")}>
+        All
+      </button>
       <button onClick={() => onFilterItems("Active")}>Active</button>
       <button onClick={() => onFilterItems("Completed")}>Completed</button>
     </div>
