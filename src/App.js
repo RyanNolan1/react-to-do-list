@@ -115,6 +115,7 @@ function AddTask({ onAddItems }) {
 function Task({ item, onRemoveTask }) {
   function handleCheck() {
     item.checked = item.checked === false ? true : false;
+    item.status = item.check === false ? "Active" : "Complete";
   }
 
   return (
@@ -156,7 +157,7 @@ function Filter({ onFilterItems }) {
     <div className="container filter">
       <button onClick={() => onFilterItems()}>All</button>
       <button onClick={() => onFilterItems("Active")}>Active</button>
-      <button onClick={() => onFilterItems("Completed")}>Completed</button>
+      <button onClick={() => onFilterItems("Complete")}>Completed</button>
     </div>
   );
 }
