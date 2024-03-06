@@ -135,6 +135,9 @@ input:focus {
   border: 1px solid darkgray;
   border-radius: 100px;
   box-sizing: border-box;
+  display:flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .custom-checkbox:hover {

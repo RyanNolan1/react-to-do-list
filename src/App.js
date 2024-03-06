@@ -134,7 +134,7 @@ function Task({ item, onRemoveTask }) {
           className="checkbox"
           onClick={() => handleCheck()}
         />
-        <div className="custom-checkbox"></div>
+        <div className="custom-checkbox"><svg xmlns="http://www.w3.org/2000/svg" width="11" height="9"><path fill="none" stroke="#FFF" stroke-width="2" d="M1 4.304L3.696 7l6-6"/></svg></div>
       </label>
       <p type="text" name="task-text">
         {item.task}
@@ -152,7 +152,7 @@ function Task({ item, onRemoveTask }) {
 function CountClear({ itemCount, onRemoveCompletedTasks }) {
   return (
     <div className="container count-clear">
-      <p className="item-count">{itemCount} Items Left</p>
+      <p className="item-count">{itemCount} Items Left </p>
       <button onClick={ onRemoveCompletedTasks }>Clear Completed</button>
     </div>
   );
