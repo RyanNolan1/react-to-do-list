@@ -32,13 +32,19 @@ export default function App() {
     }
   }
 
+  function removeCompletedTasks() {
+    const filteredArray = items.filter((item) => item.status !== "Complete")
+    setItems(filteredArray);
+    setFilteredItems(filteredArray);
+  }
+
   return (
     <div className="app">
       <Header />
       <div className="tasks-container">
         <AddTask onAddItems={handleAddItems} />
         <ToDoList handleRemoveTask={handleRemoveTask} items={filteredItems} />
-        <CountClear itemCount={items.length} />
+        <CountClear onRemoveCompletedTasks={removeCompletedTasks} itemCount={items.length} />
         <Filter onFilterItems={handleFilter} />
       </div>
     </div>
@@ -143,11 +149,11 @@ function Task({ item, onRemoveTask }) {
   );
 }
 
-function CountClear({ itemCount }) {
+function CountClear({ itemCount, onRemoveCompletedTasks }) {
   return (
     <div className="container count-clear">
       <p className="item-count">{itemCount} Items Left</p>
-      <button>Clear Completed</button>
+      <button onClick={ onRemoveCompletedTasks }>Clear Completed</button>
     </div>
   );
 }
