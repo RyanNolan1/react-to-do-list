@@ -66,18 +66,18 @@ h1 {
 .add-task {
   border-radius: 5px;
   margin-bottom: 1rem;
-  margin-top:-4rem;
+  margin-top: -4rem;
 }
 
 .task {
   border-bottom: 1px solid #e3e4f1;
-  justify-content:start;
+  justify-content: start;
 }
 
 .task p {
   font-size: 0.66rem;
-  flex-grow:1;
-  color: #494C6B;
+  flex-grow: 1;
+  color: #494c6b;
 }
 
 .count-clear {
@@ -118,7 +118,7 @@ input:focus {
 
 .tasks-container {
   filter: drop-shadow(0px 0px 20px hsl(233, 11%, 84%));
-  padding:0 1rem;
+  padding: 0 1rem;
 }
 
 .cross:hover {
@@ -132,7 +132,7 @@ input:focus {
 .custom-checkbox {
   width: 20px;
   height: 20px;
-  border: 2px solid darkgray;
+  border: 1px solid darkgray;
   border-radius: 100px;
   box-sizing: border-box;
 }
@@ -143,8 +143,22 @@ input:focus {
 }
 
 .checkbox:checked + .custom-checkbox {
-  background-color: red;
+  background: rgb(85, 221, 255);
+  background: -moz-linear-gradient(0deg, rgba(85, 221, 255, 1) 0%, rgba(192, 88, 243, 1) 100%);
+  background: -webkit-linear-gradient(0deg, rgba(85, 221, 255, 1) 0%, rgba(192, 88, 243, 1) 100%);
+  background: linear-gradient(0deg, rgba(85, 221, 255, 1) 0%, rgba(192, 88, 243, 1) 100%);
+  
+  border-image: 
+    linear-gradient(0deg, rgba(85, 221, 255, 1) 0%, rgba(192, 88, 243, 1) 100%);
+  border-image: 
+    -moz-linear-gradient(0deg, rgba(85, 221, 255, 1) 0%, rgba(192, 88, 243, 1) 100%);
+  border-image: 
+    -webkit-linear-gradient(0deg, rgba(85, 221, 255, 1) 0%, rgba(192, 88, 243, 1) 100%);
+  
+  border-width: 0px;
+  border-style: solid;
 }
+
 
 @media (min-width: 768px) {
   header {
@@ -162,7 +176,7 @@ input:focus {
   }
 
   .add-task {
-    margin-top:-8rem;
+    margin-top: -8rem;
     margin-bottom: 1.5rem;
   }
 
