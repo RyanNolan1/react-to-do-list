@@ -17,6 +17,7 @@ export default function App() {
 
   function handleRemoveTask(id) {
     const filteredArray = items.filter((item) => item.id !== id);
+    setItems(filteredArray);
     setFilteredItems(filteredArray);
   }
 
