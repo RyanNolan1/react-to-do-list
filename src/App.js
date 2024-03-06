@@ -1,10 +1,14 @@
 import moonIcon from "./images/icon-moon.svg";
 import cross from "./images/icon-cross.svg";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function App() {
   const [items, setItems] = useState([]);
   const [filteredItems, setFilteredItems] = useState(items);
+
+  useEffect(() => {
+    setFilteredItems(items);
+  }, [items]);
 
   function handleAddItems(item) {
     setItems((items) => [...items, item]);
