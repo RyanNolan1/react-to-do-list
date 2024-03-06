@@ -6,6 +6,8 @@ export default function App() {
   const [items, setItems] = useState([]);
   const [filteredItems, setFilteredItems] = useState(items);
 
+  console.log(items)
+
   useEffect(() => {
     setFilteredItems(items);
   }, [items]);
@@ -78,7 +80,7 @@ function AddTask({ onAddItems }) {
     e.preventDefault();
 
     if (task) {
-      const newItem = { id: id, task, status: "Active" };
+      const newItem = { id: id, task, status: "Active", checked:false };
       onAddItems(newItem);
       setTask("");
       setId(id + 1);
@@ -111,8 +113,8 @@ function AddTask({ onAddItems }) {
 }
 
 function Task({ item, onRemoveTask }) {
-  function updateStatus() {
-    item.status = item.status === "Active" ? "Completed" : "Active";
+  function handleCheck() {
+    item.checked = item.checked === false ? true : false;
   }
 
   return (
@@ -123,7 +125,7 @@ function Task({ item, onRemoveTask }) {
           type="checkbox"
           name="task-checkbox"
           className="checkbox"
-          onClick={() => updateStatus()}
+          onClick={() => handleCheck()}
         />
         <div className="custom-checkbox"></div>
       </label>
