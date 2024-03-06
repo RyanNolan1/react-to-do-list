@@ -4,6 +4,9 @@ import { useState } from "react";
 
 export default function App() {
   const [items, setItems] = useState([]);
+  const [filteredItems, setFilteredItems] = useState(items);
+
+  console.log(filteredItems)
 
   function handleAddItems(item) {
     setItems((items) => [...items, item]);
@@ -16,17 +19,17 @@ export default function App() {
 
   function handleFilter(status) {
     const filteredArray = items.filter((item) => item.status === status);
-    setItems(filteredArray);
+    setFilteredItems(filteredArray);
   }
 
   return (
     <div className="app">
       <Header />
       <div className="tasks-container">
-        <AddTask  onAddItems={handleAddItems} />
-        <ToDoList handleRemoveTask={ handleRemoveTask } items={items} />
-        <CountClear itemCount={items.length} />
-        <Filter onFilterItems={handleFilter} />
+        <AddTask  onAddItems={ handleAddItems } />
+        <ToDoList handleRemoveTask={ handleRemoveTask } items={ items } />
+        <CountClear itemCount={ items.length } />
+        <Filter onFilterItems={ handleFilter } />
       </div>
     </div>
   );
