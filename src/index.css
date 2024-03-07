@@ -132,7 +132,7 @@ input:focus {
 .custom-checkbox {
   width: 20px;
   height: 20px;
-  border: 1px solid darkgray;
+  border: 1px solid #E3E4F1;
   border-radius: 100px;
   box-sizing: border-box;
   display:flex;
