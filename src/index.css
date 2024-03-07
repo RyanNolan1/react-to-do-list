@@ -23,7 +23,7 @@ button {
   transition: 0.4s;
 }
 
-.filter-buttons:focus {
+.active {
   color: #3a7cfd;
 }
 

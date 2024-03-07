@@ -6,8 +6,6 @@ export default function App() {
   const [items, setItems] = useState([]);
   const [filteredItems, setFilteredItems] = useState(items);
 
-  console.log(items)
-
   useEffect(() => {
     setFilteredItems(items);
   }, [items]);
@@ -126,10 +124,9 @@ function Task({ item, onRemoveTask }) {
 
   function handleCheck() {
     item.checked = isChecked ? false : true;
-    item.status = isChecked ? "Active" : "Complete"
+    item.status = isChecked ? "Active" : "Complete";
     setIsChecked(!isChecked);
   }
-
 
   return (
     <div className="container task" key={item.index}>
@@ -139,8 +136,8 @@ function Task({ item, onRemoveTask }) {
           type="checkbox"
           name="task-checkbox"
           className="checkbox"
-          checked = {item.checked}
-          status = {item.status}
+          checked={item.checked}
+          status={item.status}
           onChange={() => handleCheck()}
         />
         <div className="custom-checkbox">
@@ -159,8 +156,10 @@ function Task({ item, onRemoveTask }) {
       <p
         type="text"
         name="task-text"
-        style={{ textDecoration: item.checked === true ? "line-through" : "none",
-        color: item.checked === true ? "#D1D2DA" : "#494C6B" }}
+        style={{
+          textDecoration: item.checked === true ? "line-through" : "none",
+          color: item.checked === true ? "#D1D2DA" : "#494C6B",
+        }}
       >
         {item.task}
       </p>
@@ -184,11 +183,49 @@ function CountClear({ itemCount, onRemoveCompletedTasks }) {
 }
 
 function Filter({ onFilterItems }) {
+  const [activeButton, setActiveButton] = useState(null);
+
+  function handleButtonClick(buttonId) {
+    setActiveButton(buttonId);
+  }
+
+  console.log(activeButton);
+
   return (
     <div className="container filter">
-      <button className="filter-buttons" onClick={() => onFilterItems()}>All</button>
-      <button className="filter-buttons" onClick={() => onFilterItems("Active")}>Active</button>
-      <button className="filter-buttons"onClick={() => onFilterItems("Complete")}>Completed</button>
+      <button
+        onClick={() => {
+          onFilterItems();
+          handleButtonClick(1);
+        }}
+        className={
+          activeButton === 1 ? "filter-buttons active" : "filter-buttons"
+        }
+      >
+        All
+      </button>
+      <button
+        onClick={() => {
+          onFilterItems("Active");
+          handleButtonClick(2);
+        }}
+        className={
+          activeButton === 2 ? "filter-buttons active" : "filter-buttons"
+        }
+      >
+        Active
+      </button>
+      <button
+        onClick={() => {
+          onFilterItems("Complete");
+          handleButtonClick(3);
+        }}
+        className={
+          activeButton === 3 ? "filter-buttons active" : "filter-buttons"
+        }
+      >
+        Completed
+      </button>
     </div>
   );
 }
