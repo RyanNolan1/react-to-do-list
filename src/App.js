@@ -123,13 +123,9 @@ function Task({ item, onRemoveTask }) {
   const [isChecked, setIsChecked] = useState(false);
 
   function handleCheck() {
-    if (isChecked === false) {
-      setIsChecked(true);
-    } else {
-      setIsChecked(false);
-    }
-    item.checked = item.checked === false ? true : false;
-    item.status = item.check === false ? "Active" : "Complete";
+    setIsChecked(!isChecked);
+    item.checked = isChecked ? true : false;
+    item.status = isChecked ? "Active" : "Complete";
   }
 
   return (
@@ -155,7 +151,11 @@ function Task({ item, onRemoveTask }) {
           </div>
         </div>
       </label>
-      <p type="text" name="task-text" style={{textDecoration: isChecked ? 'line-through' : 'none'}}>
+      <p
+        type="text"
+        name="task-text"
+        style={{ textDecoration: isChecked ? "line-through" : "none" }}
+      >
         {item.task}
       </p>
       <img
