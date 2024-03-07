@@ -18,9 +18,13 @@ body {
 button {
   border: none;
   background: none;
-  font-size: 0.66rem;
+  font-size: 0.77rem;
   color: #9495a5;
   transition: 0.4s;
+}
+
+.filter-buttons:focus {
+  color: #3a7cfd;
 }
 
 button:hover {
@@ -92,7 +96,7 @@ h1 {
   justify-content: center;
   margin-top: 1rem;
   border-radius: 5px;
-  margin-bottom:7.11rem;
+  margin-bottom: 7.11rem;
 }
 
 input[type="text"] {

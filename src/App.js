@@ -186,9 +186,9 @@ function CountClear({ itemCount, onRemoveCompletedTasks }) {
 function Filter({ onFilterItems }) {
   return (
     <div className="container filter">
-      <button onClick={() => onFilterItems()}>All</button>
-      <button onClick={() => onFilterItems("Active")}>Active</button>
-      <button onClick={() => onFilterItems("Complete")}>Completed</button>
+      <button className="filter-buttons" onClick={() => onFilterItems()}>All</button>
+      <button className="filter-buttons" onClick={() => onFilterItems("Active")}>Active</button>
+      <button className="filter-buttons"onClick={() => onFilterItems("Complete")}>Completed</button>
     </div>
   );
 }
