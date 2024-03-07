@@ -134,7 +134,10 @@ function Task({ item, onRemoveTask }) {
           className="checkbox"
           onClick={() => handleCheck()}
         />
-        <div className="custom-checkbox"><svg xmlns="http://www.w3.org/2000/svg" width="11" height="9"><path fill="none" stroke="#FFF" stroke-width="2" d="M1 4.304L3.696 7l6-6"/></svg></div>
+        <div className="custom-checkbox">
+          <div className="tick-container"><svg xmlns="http://www.w3.org/2000/svg" width="11" height="9"><path fill="none" stroke="#FFF" stroke-width="2" d="M1 4.304L3.696 7l6-6"/></svg>
+          </div>
+          </div>
       </label>
       <p type="text" name="task-text">
         {item.task}
