@@ -159,7 +159,8 @@ function Task({ item, onRemoveTask }) {
       <p
         type="text"
         name="task-text"
-        style={{ textDecoration: item.checked === true ? "line-through" : "none" }}
+        style={{ textDecoration: item.checked === true ? "line-through" : "none",
+        color: item.checked === true ? "#D1D2DA" : "black" }}
       >
         {item.task}
       </p>
