@@ -6,6 +6,8 @@ export default function App() {
   const [items, setItems] = useState([]);
   const [filteredItems, setFilteredItems] = useState(items);
 
+  console.log(items)
+
   useEffect(() => {
     setFilteredItems(items);
   }, [items]);
@@ -120,12 +122,10 @@ function AddTask({ onAddItems }) {
 }
 
 function Task({ item, onRemoveTask }) {
-  const [isChecked, setIsChecked] = useState(false);
+  const [isChecked, setIsChecked] = useState(true);
 
   function handleCheck() {
     setIsChecked(!isChecked);
-    item.checked = isChecked ? true : false;
-    item.status = isChecked ? "Active" : "Complete";
   }
 
   return (
@@ -136,7 +136,9 @@ function Task({ item, onRemoveTask }) {
           type="checkbox"
           name="task-checkbox"
           className="checkbox"
-          onClick={() => handleCheck()}
+          checked = {item.checked = isChecked ? false : true}
+          status = {item.status = isChecked ? "Active" : "Complete"}
+          onChange={() => handleCheck()}
         />
         <div className="custom-checkbox">
           <div className="tick-container">
@@ -144,7 +146,7 @@ function Task({ item, onRemoveTask }) {
               <path
                 fill="none"
                 stroke="#FFF"
-                stroke-width="2"
+                strokeWidth="2"
                 d="M1 4.304L3.696 7l6-6"
               />
             </svg>
@@ -154,7 +156,7 @@ function Task({ item, onRemoveTask }) {
       <p
         type="text"
         name="task-text"
-        style={{ textDecoration: isChecked ? "line-through" : "none" }}
+        style={{ textDecoration: isChecked ? "none" : "line-through" }}
       >
         {item.task}
       </p>
