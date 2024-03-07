@@ -5,6 +5,11 @@ import { useState, useEffect } from "react";
 export default function App() {
   const [items, setItems] = useState([]);
   const [filteredItems, setFilteredItems] = useState(items);
+  const [activeButton, setActiveButton] = useState(null);
+
+  function handleButtonClick(buttonId) {
+    setActiveButton(buttonId);
+  }
 
   useEffect(() => {
     setFilteredItems(items);
@@ -45,8 +50,13 @@ export default function App() {
         <CountClear
           onRemoveCompletedTasks={removeCompletedTasks}
           itemCount={items.length}
+          handleButtonClick={handleButtonClick}
         />
-        <Filter onFilterItems={handleFilter} />
+        <Filter
+          handleButtonClick={handleButtonClick}
+          activeButton={activeButton}
+          onFilterItems={handleFilter}
+        />
       </div>
     </div>
   );
@@ -173,24 +183,23 @@ function Task({ item, onRemoveTask }) {
   );
 }
 
-function CountClear({ itemCount, onRemoveCompletedTasks }) {
+function CountClear({ itemCount, onRemoveCompletedTasks, handleButtonClick }) {
   return (
     <div className="container count-clear">
       <p className="item-count">{itemCount} Items Left </p>
-      <button onClick={onRemoveCompletedTasks}>Clear Completed</button>
+      <button
+        onClick={() => {
+          onRemoveCompletedTasks();
+          handleButtonClick(1);
+        }}
+      >
+        Clear Completed
+      </button>
     </div>
   );
 }
 
-function Filter({ onFilterItems }) {
-  const [activeButton, setActiveButton] = useState(null);
-
-  function handleButtonClick(buttonId) {
-    setActiveButton(buttonId);
-  }
-
-  console.log(activeButton);
-
+function Filter({ onFilterItems, handleButtonClick, activeButton }) {
   return (
     <div className="container filter">
       <button
