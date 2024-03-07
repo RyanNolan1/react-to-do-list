@@ -122,11 +122,14 @@ function AddTask({ onAddItems }) {
 }
 
 function Task({ item, onRemoveTask }) {
-  const [isChecked, setIsChecked] = useState(true);
+  const [isChecked, setIsChecked] = useState(false);
 
   function handleCheck() {
+    item.checked = isChecked ? false : true;
+    item.status = isChecked ? "Active" : "Complete"
     setIsChecked(!isChecked);
   }
+
 
   return (
     <div className="container task" key={item.index}>
@@ -136,8 +139,8 @@ function Task({ item, onRemoveTask }) {
           type="checkbox"
           name="task-checkbox"
           className="checkbox"
-          checked = {item.checked = isChecked ? false : true}
-          status = {item.status = isChecked ? "Active" : "Complete"}
+          checked = {item.checked}
+          status = {item.status}
           onChange={() => handleCheck()}
         />
         <div className="custom-checkbox">
@@ -156,7 +159,7 @@ function Task({ item, onRemoveTask }) {
       <p
         type="text"
         name="task-text"
-        style={{ textDecoration: isChecked ? "none" : "line-through" }}
+        style={{ textDecoration: isChecked ? "line-through" : "none" }}
       >
         {item.task}
       </p>
