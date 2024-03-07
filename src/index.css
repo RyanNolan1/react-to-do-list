@@ -20,11 +20,12 @@ button {
   background: none;
   font-size: 0.66rem;
   color: #9495a5;
+  transition: 0.4s;
 }
 
 button:hover {
   cursor: pointer;
-  color:#494C6B;
+  color: #494c6b;
 }
 
 header {
@@ -136,7 +137,7 @@ input:focus {
   background: white;
   border-radius: 100px;
   box-sizing: border-box;
-  border:1px solid #e3e4f1;
+  border: 1px solid #e3e4f1;
 }
 
 .custom-checkbox {
