@@ -6,8 +6,6 @@ export default function App() {
   const [items, setItems] = useState([]);
   const [filteredItems, setFilteredItems] = useState(items);
 
-  console.log(items)
-
   useEffect(() => {
     setFilteredItems(items);
   }, [items]);
@@ -33,7 +31,7 @@ export default function App() {
   }
 
   function removeCompletedTasks() {
-    const filteredArray = items.filter((item) => item.status !== "Complete")
+    const filteredArray = items.filter((item) => item.status !== "Complete");
     setItems(filteredArray);
     setFilteredItems(filteredArray);
   }
@@ -44,7 +42,10 @@ export default function App() {
       <div className="tasks-container">
         <AddTask onAddItems={handleAddItems} />
         <ToDoList handleRemoveTask={handleRemoveTask} items={filteredItems} />
-        <CountClear onRemoveCompletedTasks={removeCompletedTasks} itemCount={items.length} />
+        <CountClear
+          onRemoveCompletedTasks={removeCompletedTasks}
+          itemCount={items.length}
+        />
         <Filter onFilterItems={handleFilter} />
       </div>
     </div>
@@ -86,7 +87,7 @@ function AddTask({ onAddItems }) {
     e.preventDefault();
 
     if (task) {
-      const newItem = { id: id, task, status: "Active", checked:false };
+      const newItem = { id: id, task, status: "Active", checked: false };
       onAddItems(newItem);
       setTask("");
       setId(id + 1);
@@ -119,7 +120,14 @@ function AddTask({ onAddItems }) {
 }
 
 function Task({ item, onRemoveTask }) {
+  const [isChecked, setIsChecked] = useState(false);
+
   function handleCheck() {
+    if (isChecked === false) {
+      setIsChecked(true);
+    } else {
+      setIsChecked(false);
+    }
     item.checked = item.checked === false ? true : false;
     item.status = item.check === false ? "Active" : "Complete";
   }
@@ -135,11 +143,19 @@ function Task({ item, onRemoveTask }) {
           onClick={() => handleCheck()}
         />
         <div className="custom-checkbox">
-          <div className="tick-container"><svg xmlns="http://www.w3.org/2000/svg" width="11" height="9"><path fill="none" stroke="#FFF" stroke-width="2" d="M1 4.304L3.696 7l6-6"/></svg>
+          <div className="tick-container">
+            <svg xmlns="http://www.w3.org/2000/svg" width="11" height="9">
+              <path
+                fill="none"
+                stroke="#FFF"
+                stroke-width="2"
+                d="M1 4.304L3.696 7l6-6"
+              />
+            </svg>
           </div>
-          </div>
+        </div>
       </label>
-      <p type="text" name="task-text">
+      <p type="text" name="task-text" style={{textDecoration: isChecked ? 'line-through' : 'none'}}>
         {item.task}
       </p>
       <img
@@ -156,7 +172,7 @@ function CountClear({ itemCount, onRemoveCompletedTasks }) {
   return (
     <div className="container count-clear">
       <p className="item-count">{itemCount} Items Left </p>
-      <button onClick={ onRemoveCompletedTasks }>Clear Completed</button>
+      <button onClick={onRemoveCompletedTasks}>Clear Completed</button>
     </div>
   );
 }
