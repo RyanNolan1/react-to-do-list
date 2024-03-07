@@ -102,7 +102,7 @@ function AddTask({ onAddItems }) {
           name="add-task-checkbox"
           className="checkbox"
         />
-        <div className="custom-checkbox"></div>
+        <div className="add-custom-checkbox"></div>
       </label>
       <input
         id="add-task-text"

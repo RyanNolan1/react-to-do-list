@@ -129,6 +129,15 @@ input:focus {
   display: none;
 }
 
+.add-custom-checkbox {
+  width: 22px;
+  height: 22px;
+  background: white;
+  border-radius: 100px;
+  box-sizing: border-box;
+  border:1px solid #e3e4f1;
+}
+
 .custom-checkbox {
   width: 22px;
   height: 22px;
