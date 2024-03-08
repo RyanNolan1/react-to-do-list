@@ -173,7 +173,7 @@ function Task({ item, onRemoveTask, darkMode }) {
           onChange={() => handleCheck()}
         />
         <div className="custom-checkbox">
-          <div className="tick-container">
+          <div className={darkMode === true ? "tick-container dark-tick" : "tick-container"}>
             <svg xmlns="http://www.w3.org/2000/svg" width="11" height="9">
               <path
                 fill="none"

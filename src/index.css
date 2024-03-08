@@ -94,7 +94,8 @@ h1 {
 }
 
 .dark-task {
-  background-color:#494c6b;
+  background-color:#25273D;
+  border-bottom: 1px solid #393A4B
 }
 
 .dark-task p {
@@ -198,6 +199,10 @@ input:focus {
   justify-content: center;
   align-items: center;
   border-radius: 100px;
+}
+
+.dark-tick {
+  background:#25273D;
 }
 
 .custom-checkbox:hover {
