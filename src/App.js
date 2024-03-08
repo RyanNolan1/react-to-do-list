@@ -152,8 +152,6 @@ function Task({ item, onRemoveTask, darkMode }) {
   const [isChecked, setIsChecked] = useState(false);
 
   function handleCheck() {
-    item.checked = isChecked ? false : true;
-    item.status = isChecked ? "Active" : "Complete";
     setIsChecked(!isChecked);
   }
 
@@ -170,8 +168,8 @@ function Task({ item, onRemoveTask, darkMode }) {
           type="checkbox"
           name="task-checkbox"
           className="checkbox"
-          checked={item.checked}
-          status={item.status}
+          checked={isChecked}
+          status={item.status = item.checked === true ? "Active" : "Complete"}
           onChange={() => handleCheck()}
         />
         <div className="custom-checkbox">
@@ -190,10 +188,7 @@ function Task({ item, onRemoveTask, darkMode }) {
       <p
         type="text"
         name="task-text"
-        style={{
-          textDecoration: item.checked === true ? "line-through" : "none",
-          // color: item.checked === true ? "#D1D2DA" : "#494C6B",
-        }}
+        className={isChecked ? "checked-text" : "unchecked-text"}
       >
         {item.task}
       </p>

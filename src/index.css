@@ -91,7 +91,6 @@ h1 {
 .task p {
   font-size: 0.66rem;
   flex-grow: 1;
-  color: #494c6b;
 }
 
 .dark-task {
@@ -247,6 +246,16 @@ input:focus {
 
 .checkbox:checked + .custom-checkbox .tick-container {
   background-color: transparent;
+}
+
+.checked-text {
+  text-decoration: line-through;
+  color:#D1D2DA;
+}
+
+.unchecked-text {
+  text-decoration: none;
+  color:#494C6B;
 }
 
 @media (min-width: 768px) {
