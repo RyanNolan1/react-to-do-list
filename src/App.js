@@ -16,6 +16,12 @@ export default function App() {
 
   function handleDarkMode() {
     setIsDarkMode(!isDarkMode);
+
+    if (isDarkMode) {
+      document.body.style.background = "hsl(0, 0%, 98%)";
+    } else {
+      document.body.style.background = "#171823";
+    }
   }
 
   useEffect(() => {
@@ -51,7 +57,7 @@ export default function App() {
   return (
     <div className="app">
       <Header onDarkMode={handleDarkMode} darkMode={isDarkMode} />
-      <div className="tasks-container">
+      <div className={isDarkMode === true ? "dark-tasks-container" : "tasks-container"}>
         <AddTask darkMode={isDarkMode} onAddItems={handleAddItems} />
         <ToDoList
           darkMode={isDarkMode}
@@ -188,8 +194,7 @@ function Task({ item, onRemoveTask, darkMode }) {
               darkMode === true ? "tick-container dark-tick" : "tick-container"
             }
           >
-            {isChecked &&
-            <img src={check} alt="tick" />}
+            {isChecked && <img src={check} alt="tick" />}
           </div>
         </div>
       </label>
