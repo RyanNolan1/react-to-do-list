@@ -104,7 +104,7 @@ function Header({ onDarkMode, darkMode }) {
 
 function ToDoList({ items, handleRemoveTask, darkMode }) {
   return (
-    <div>
+    <div className="tasks-list">
       {items.map((item, index) => (
         <Task
           onRemoveTask={handleRemoveTask}

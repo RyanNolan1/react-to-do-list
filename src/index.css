@@ -101,6 +101,10 @@ h1 {
   border-bottom: 1px solid #393A4B
 }
 
+.dark-task p {
+  color:#C8CBE7;
+}
+
 
 .dark {
   background-color:#25273D;
@@ -153,8 +157,16 @@ input:focus {
   padding: 0 1rem;
 }
 
+.tasks-list {
+  border-radius:5px 5px 0 0;
+  max-width: 30rem;
+  margin:0 auto;
+  overflow:hidden;
+}
+
 .dark-tasks-container {
   filter: drop-shadow(0px 0px 20px rgba(0, 0, 0, 0.494));
+  padding: 0 1rem;
 }
 
 .cross:hover {
