@@ -57,7 +57,11 @@ export default function App() {
   return (
     <div className="app">
       <Header onDarkMode={handleDarkMode} darkMode={isDarkMode} />
-      <div className={isDarkMode === true ? "dark-tasks-container" : "tasks-container"}>
+      <div
+        className={
+          isDarkMode === true ? "dark-tasks-container" : "tasks-container"
+        }
+      >
         <AddTask darkMode={isDarkMode} onAddItems={handleAddItems} />
         <ToDoList
           darkMode={isDarkMode}
@@ -166,6 +170,8 @@ function Task({ item, onRemoveTask, darkMode }) {
   const [isChecked, setIsChecked] = useState(false);
 
   function handleCheck() {
+    item.checked = isChecked ? false : true;
+    item.status = isChecked ? "Active" : "Complete";
     setIsChecked(!isChecked);
   }
 
@@ -182,10 +188,8 @@ function Task({ item, onRemoveTask, darkMode }) {
           type="checkbox"
           name="task-checkbox"
           className="checkbox"
-          checked={(item.checked = isChecked)}
-          status={
-            (item.status = item.checked === false ? "Active" : "Complete")
-          }
+          checked={item.checked}
+          status={item.status}
           onChange={() => handleCheck()}
         />
         <div className="custom-checkbox">
@@ -194,7 +198,7 @@ function Task({ item, onRemoveTask, darkMode }) {
               darkMode === true ? "tick-container dark-tick" : "tick-container"
             }
           >
-            {isChecked && <img src={check} alt="tick" />}
+            <img src={check} alt="tick" />
           </div>
         </div>
       </label>
