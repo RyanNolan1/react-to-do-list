@@ -168,8 +168,8 @@ function Task({ item, onRemoveTask, darkMode }) {
           type="checkbox"
           name="task-checkbox"
           className="checkbox"
-          checked={isChecked}
-          status={item.status = item.checked === true ? "Active" : "Complete"}
+          checked={item.checked = isChecked}
+          status={item.status = item.checked === false ? "Active" : "Complete"}
           onChange={() => handleCheck()}
         />
         <div className="custom-checkbox">
