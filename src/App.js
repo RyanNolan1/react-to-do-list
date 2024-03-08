@@ -234,7 +234,7 @@ function CountClear({
       }
     >
       <p className="item-count">{itemCount} Items Left </p>
-      <button
+      <button className={darkMode === true && 'darkmode-button-hover'}
         onClick={() => {
           onRemoveCompletedTasks();
           handleButtonClick(1);
@@ -264,7 +264,7 @@ function Filter({ onFilterItems, handleButtonClick, activeButton, darkMode }) {
       >
         All
       </button>
-      <button
+      <button 
         onClick={() => {
           onFilterItems("Active");
           handleButtonClick(2);

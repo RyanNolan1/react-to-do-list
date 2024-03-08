@@ -32,6 +32,10 @@ button:hover {
   color: #494c6b;
 }
 
+.darkmode-button-hover:hover {
+  color:white;
+}
+
 header {
   background-repeat: no-repeat;
   background-size: cover;
@@ -98,6 +102,10 @@ h1 {
 }
 
 .dark-task p {
+  color:white;
+}
+
+.dark-task button:hover {
   color:white;
 }
 
