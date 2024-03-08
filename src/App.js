@@ -234,7 +234,7 @@ function CountClear({
       }
     >
       <p className="item-count">{itemCount} Items Left </p>
-      <button className={darkMode === true && 'darkmode-button-hover'}
+      <button className={darkMode === true ? 'darkmode-button-hover' : undefined}
         onClick={() => {
           onRemoveCompletedTasks();
           handleButtonClick(1);
