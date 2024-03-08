@@ -70,7 +70,7 @@ export default function App() {
 
 function Header({ onDarkMode, darkMode }) {
   return (
-    <header>
+    <header className={darkMode === false ? "bg-light" : "bg-dark"}>
       <div className="container title-toggle">
         <h1>T O D O</h1>
         <button

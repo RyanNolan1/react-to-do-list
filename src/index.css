@@ -33,13 +33,21 @@ button:hover {
 }
 
 header {
-  background-image: url(./images/bg-mobile-light.jpg);
+
   background-repeat: no-repeat;
   background-size: cover;
   height: 200px;
   padding: 2rem 1rem;
   display: flex;
   flex-direction: column;
+}
+
+.bg-light {
+  background-image: url(./images/bg-mobile-light.jpg);
+}
+
+.bg-dark {
+  background-image: url(./images/bg-mobile-dark.jpg);
 }
 
 h1 {
@@ -235,8 +243,15 @@ input:focus {
 @media (min-width: 768px) {
   header {
     height: 300px;
-    background-image: url(./images/bg-desktop-light.jpg);
     padding-top: 3rem;
+  }
+
+  .bg-light {
+    background-image: url(./images/bg-desktop-light.jpg);
+  }
+  
+  .bg-dark {
+    background-image: url(./images/bg-desktop-dark.jpg);
   }
 
   .container {
