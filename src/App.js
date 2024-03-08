@@ -198,7 +198,7 @@ function Task({ item, onRemoveTask, darkMode }) {
               darkMode === true ? "tick-container dark-tick" : "tick-container"
             }
           >
-            <img src={check} alt="tick" />
+            {item.checked === true && <img src={check} alt="tick" />}
           </div>
         </div>
       </label>
