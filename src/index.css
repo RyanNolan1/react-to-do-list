@@ -94,6 +94,14 @@ h1 {
   color: #494c6b;
 }
 
+.dark-task {
+  background-color:#494c6b;
+}
+
+.dark-task p {
+  color:white;
+}
+
 .count-clear {
   align-items: center;
   justify-content: space-between;
@@ -112,6 +120,7 @@ input[type="text"] {
   border: none;
   height: 2.66rem;
   width: 100%;
+  background: none;
 }
 
 .item-count {
