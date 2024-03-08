@@ -6,9 +6,14 @@ export default function App() {
   const [items, setItems] = useState([]);
   const [filteredItems, setFilteredItems] = useState(items);
   const [activeButton, setActiveButton] = useState(null);
+  const [isDarkMode, setIsDarkMode] = useState(false);
 
   function handleButtonClick(buttonId) {
     setActiveButton(buttonId);
+  }
+
+  function handleDarkMode() {
+    setIsDarkMode(!isDarkMode);
   }
 
   useEffect(() => {
@@ -43,7 +48,7 @@ export default function App() {
 
   return (
     <div className="app">
-      <Header />
+      <Header onDarkMode={handleDarkMode} />
       <div className="tasks-container">
         <AddTask onAddItems={handleAddItems} />
         <ToDoList handleRemoveTask={handleRemoveTask} items={filteredItems} />
@@ -62,12 +67,18 @@ export default function App() {
   );
 }
 
-function Header() {
+function Header({ onDarkMode }) {
   return (
     <header>
       <div className="container title-toggle">
         <h1>T O D O</h1>
-        <img src={moonIcon} alt="Moon Icon" />
+        <button
+          onClick={() => {
+            onDarkMode();
+          }}
+        >
+          <img src={moonIcon} alt="Moon Icon" />
+        </button>
       </div>
     </header>
   );
