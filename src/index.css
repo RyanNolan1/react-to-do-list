@@ -101,11 +101,12 @@ h1 {
   border-bottom: 1px solid #393A4B
 }
 
-.dark-task p {
-  color:white;
+
+.dark {
+  background-color:#25273D;
 }
 
-.dark-task button:hover {
+.dark button:hover {
   color:white;
 }
 

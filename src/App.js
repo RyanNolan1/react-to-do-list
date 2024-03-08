@@ -138,7 +138,7 @@ function AddTask({ onAddItems, darkMode }) {
     <form
       className={
         darkMode === true
-          ? "container add-task dark-task"
+          ? "container add-task dark"
           : "container add-task"
       }
       onSubmit={handleSubmit}
@@ -229,7 +229,7 @@ function CountClear({
     <div
       className={
         darkMode === true
-          ? "container count-clear dark-task"
+          ? "container count-clear dark"
           : "container count-clear"
       }
     >
@@ -250,7 +250,7 @@ function Filter({ onFilterItems, handleButtonClick, activeButton, darkMode }) {
   return (
     <div
       className={
-        darkMode === true ? "container filter dark-task" : "container filter"
+        darkMode === true ? "container filter dark" : "container filter"
       }
     >
       <button
