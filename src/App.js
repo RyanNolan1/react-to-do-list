@@ -10,6 +10,8 @@ export default function App() {
   const [activeButton, setActiveButton] = useState(null);
   const [isDarkMode, setIsDarkMode] = useState(false);
 
+  console.log(items);
+
   function handleButtonClick(buttonId) {
     setActiveButton(buttonId);
   }
@@ -137,9 +139,7 @@ function AddTask({ onAddItems, darkMode }) {
   return (
     <form
       className={
-        darkMode === true
-          ? "container add-task dark"
-          : "container add-task"
+        darkMode === true ? "container add-task dark" : "container add-task"
       }
       onSubmit={handleSubmit}
     >
@@ -172,6 +172,7 @@ function Task({ item, onRemoveTask, darkMode }) {
   function handleCheck() {
     item.checked = isChecked ? false : true;
     item.status = isChecked ? "Active" : "Complete";
+    item.text = isChecked ? "unchecked-text" : "checked-text";
     setIsChecked(!isChecked);
   }
 
@@ -202,11 +203,7 @@ function Task({ item, onRemoveTask, darkMode }) {
           </div>
         </div>
       </label>
-      <p
-        type="text"
-        name="task-text"
-        className={isChecked ? "checked-text" : "unchecked-text"}
-      >
+      <p type="text" name="task-text" className={item.text}>
         {item.task}
       </p>
       <img
@@ -234,7 +231,8 @@ function CountClear({
       }
     >
       <p className="item-count">{itemCount} Items Left </p>
-      <button className={darkMode === true ? 'darkmode-button-hover' : undefined}
+      <button
+        className={darkMode === true ? "darkmode-button-hover" : undefined}
         onClick={() => {
           onRemoveCompletedTasks();
           handleButtonClick(1);
@@ -264,7 +262,7 @@ function Filter({ onFilterItems, handleButtonClick, activeButton, darkMode }) {
       >
         All
       </button>
-      <button 
+      <button
         onClick={() => {
           onFilterItems("Active");
           handleButtonClick(2);

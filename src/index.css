@@ -33,7 +33,7 @@ button:hover {
 }
 
 .darkmode-button-hover:hover {
-  color:white;
+  color: white;
 }
 
 header {
@@ -94,24 +94,24 @@ h1 {
 .task p {
   font-size: 0.66rem;
   flex-grow: 1;
+  color: #494c6b;
 }
 
 .dark-task {
-  background-color:#25273D;
-  border-bottom: 1px solid #393A4B
+  background-color: #25273d;
+  border-bottom: 1px solid #393a4b;
 }
 
 .dark-task p {
-  color:#C8CBE7;
+  color: #c8cbe7;
 }
 
-
 .dark {
-  background-color:#25273D;
+  background-color: #25273d;
 }
 
 .dark button:hover {
-  color:white;
+  color: white;
 }
 
 .count-clear {
@@ -158,10 +158,10 @@ input:focus {
 }
 
 .tasks-list {
-  border-radius:5px 5px 0 0;
+  border-radius: 5px 5px 0 0;
   max-width: 30rem;
-  margin:0 auto;
-  overflow:hidden;
+  margin: 0 auto;
+  overflow: hidden;
 }
 
 .dark-tasks-container {
@@ -226,7 +226,7 @@ input:focus {
 }
 
 .dark-tick {
-  background:#25273D;
+  background: #25273d;
 }
 
 .custom-checkbox:hover {
@@ -278,12 +278,12 @@ input:focus {
 
 .checked-text {
   text-decoration: line-through;
-  color:#D1D2DA;
+  color: #d1d2da;
 }
 
 .unchecked-text {
+  color: #494c6b;;
   text-decoration: none;
-  color:#494C6B;
 }
 
 @media (min-width: 768px) {
@@ -295,7 +295,7 @@ input:focus {
   .bg-light {
     background-image: url(./images/bg-desktop-light.jpg);
   }
-  
+
   .bg-dark {
     background-image: url(./images/bg-desktop-dark.jpg);
   }
