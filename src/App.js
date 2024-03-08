@@ -10,8 +10,6 @@ export default function App() {
   const [activeButton, setActiveButton] = useState(null);
   const [isDarkMode, setIsDarkMode] = useState(false);
 
-  console.log(items);
-
   function handleButtonClick(buttonId) {
     setActiveButton(buttonId);
   }

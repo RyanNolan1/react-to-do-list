@@ -23,6 +23,10 @@ button {
   transition: 0.4s;
 }
 
+p {
+  color: #494c6b;
+}
+
 .active {
   color: #3a7cfd;
 }
@@ -94,7 +98,6 @@ h1 {
 .task p {
   font-size: 0.66rem;
   flex-grow: 1;
-  color: #494c6b;
 }
 
 .dark-task {
