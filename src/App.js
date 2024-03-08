@@ -1,6 +1,7 @@
 import moonIcon from "./images/icon-moon.svg";
 import sunIcon from "./images/icon-sun.svg";
 import cross from "./images/icon-cross.svg";
+import check from "./images/icon-check.svg";
 import { useState, useEffect } from "react";
 
 export default function App() {
@@ -124,7 +125,14 @@ function AddTask({ onAddItems, darkMode }) {
   }
 
   return (
-    <form className={darkMode === true ? "container add-task dark-task" :  "container add-task"}  onSubmit={handleSubmit}>
+    <form
+      className={
+        darkMode === true
+          ? "container add-task dark-task"
+          : "container add-task"
+      }
+      onSubmit={handleSubmit}
+    >
       <label htmlFor="add-task-checkbox">
         <input
           id="add-task-checkbox"
@@ -168,20 +176,20 @@ function Task({ item, onRemoveTask, darkMode }) {
           type="checkbox"
           name="task-checkbox"
           className="checkbox"
-          checked={item.checked = isChecked}
-          status={item.status = item.checked === false ? "Active" : "Complete"}
+          checked={(item.checked = isChecked)}
+          status={
+            (item.status = item.checked === false ? "Active" : "Complete")
+          }
           onChange={() => handleCheck()}
         />
         <div className="custom-checkbox">
-          <div className={darkMode === true ? "tick-container dark-tick" : "tick-container"}>
-            <svg xmlns="http://www.w3.org/2000/svg" width="11" height="9">
-              <path
-                fill="none"
-                stroke="#FFF"
-                strokeWidth="2"
-                d="M1 4.304L3.696 7l6-6"
-              />
-            </svg>
+          <div
+            className={
+              darkMode === true ? "tick-container dark-tick" : "tick-container"
+            }
+          >
+            {isChecked &&
+            <img src={check} alt="tick" />}
           </div>
         </div>
       </label>
@@ -202,10 +210,20 @@ function Task({ item, onRemoveTask, darkMode }) {
   );
 }
 
-function CountClear({ itemCount, onRemoveCompletedTasks, handleButtonClick, darkMode }) {
+function CountClear({
+  itemCount,
+  onRemoveCompletedTasks,
+  handleButtonClick,
+  darkMode,
+}) {
   return (
-
-    <div className={darkMode === true ? "container count-clear dark-task" : "container count-clear"}>
+    <div
+      className={
+        darkMode === true
+          ? "container count-clear dark-task"
+          : "container count-clear"
+      }
+    >
       <p className="item-count">{itemCount} Items Left </p>
       <button
         onClick={() => {
@@ -221,7 +239,11 @@ function CountClear({ itemCount, onRemoveCompletedTasks, handleButtonClick, dark
 
 function Filter({ onFilterItems, handleButtonClick, activeButton, darkMode }) {
   return (
-    <div className={darkMode === true ? "container filter dark-task" : "container filter"} >
+    <div
+      className={
+        darkMode === true ? "container filter dark-task" : "container filter"
+      }
+    >
       <button
         onClick={() => {
           onFilterItems();
