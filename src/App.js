@@ -1,4 +1,5 @@
 import moonIcon from "./images/icon-moon.svg";
+import sunIcon from "./images/icon-sun.svg";
 import cross from "./images/icon-cross.svg";
 import { useState, useEffect } from "react";
 
@@ -48,7 +49,7 @@ export default function App() {
 
   return (
     <div className="app">
-      <Header onDarkMode={handleDarkMode} />
+      <Header onDarkMode={handleDarkMode} darkMode={isDarkMode} />
       <div className="tasks-container">
         <AddTask onAddItems={handleAddItems} />
         <ToDoList handleRemoveTask={handleRemoveTask} items={filteredItems} />
@@ -67,7 +68,7 @@ export default function App() {
   );
 }
 
-function Header({ onDarkMode }) {
+function Header({ onDarkMode, darkMode }) {
   return (
     <header>
       <div className="container title-toggle">
@@ -77,7 +78,7 @@ function Header({ onDarkMode }) {
             onDarkMode();
           }}
         >
-          <img src={moonIcon} alt="Moon Icon" />
+          <img src={darkMode === false ? moonIcon : sunIcon} alt="Moon Icon" />
         </button>
       </div>
     </header>
