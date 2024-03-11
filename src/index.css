@@ -143,6 +143,14 @@ input[type="text"] {
   color: #9495a5;
 }
 
+.add-task-input {
+  color: #494c6b;
+}
+
+.dark-input {
+  color:#C8CBE7;
+}
+
 input[type="text"]::placeholder {
   color: #9495a5;
 }

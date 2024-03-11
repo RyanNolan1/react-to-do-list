@@ -151,6 +151,9 @@ function AddTask({ onAddItems, darkMode }) {
         <div className="add-custom-checkbox"></div>
       </label>
       <input
+        className={
+          darkMode === true ? "add-task-input dark-input" : "add-task-input"
+        }
         id="add-task-text"
         type="text"
         name="add-task-text"
