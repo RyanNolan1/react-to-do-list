@@ -298,8 +298,13 @@ input:focus {
 }
 
 .unchecked-text {
-  color: #494c6b;;
+  color: #494c6b;
   text-decoration: none;
+}
+
+.dark-checked-text {
+  color: #494c6b !important;
+  text-decoration: line-through;
 }
 
 @media (min-width: 768px) {

@@ -14,6 +14,16 @@ export default function App() {
     setActiveButton(buttonId);
   }
 
+  function handleDarkText(checkedOrNot) {
+    if (isDarkMode === true && checkedOrNot === "checked-text") {
+      return (checkedOrNot = "dark-checked-text");
+    }
+
+    if (isDarkMode === false && checkedOrNot === "checked-text") {
+      return (checkedOrNot = "checked-text");
+    }
+  }
+
   function handleDarkMode() {
     setIsDarkMode(!isDarkMode);
 
@@ -64,6 +74,7 @@ export default function App() {
       >
         <AddTask darkMode={isDarkMode} onAddItems={handleAddItems} />
         <ToDoList
+          onHandleDarkText={handleDarkText}
           darkMode={isDarkMode}
           handleRemoveTask={handleRemoveTask}
           items={filteredItems}
@@ -102,7 +113,7 @@ function Header({ onDarkMode, darkMode }) {
   );
 }
 
-function ToDoList({ items, handleRemoveTask, darkMode }) {
+function ToDoList({ onHandleDarkText, items, handleRemoveTask, darkMode }) {
   return (
     <div className="tasks-list">
       {items.map((item, index) => (
@@ -113,6 +124,7 @@ function ToDoList({ items, handleRemoveTask, darkMode }) {
           id={index}
           key={item.id}
           darkMode={darkMode}
+          onHandleDarkText={onHandleDarkText}
         ></Task>
       ))}
     </div>
@@ -148,7 +160,13 @@ function AddTask({ onAddItems, darkMode }) {
           name="add-task-checkbox"
           className="checkbox"
         />
-          <div className={darkMode === true ? "add-custom-checkbox dark-checkbox" : "add-custom-checkbox" }></div>
+        <div
+          className={
+            darkMode === true
+              ? "add-custom-checkbox dark-checkbox"
+              : "add-custom-checkbox"
+          }
+        ></div>
       </label>
       <input
         className={
@@ -167,7 +185,7 @@ function AddTask({ onAddItems, darkMode }) {
   );
 }
 
-function Task({ item, onRemoveTask, darkMode }) {
+function Task({ item, onRemoveTask, darkMode, onHandleDarkText }) {
   const [isChecked, setIsChecked] = useState(false);
 
   function handleCheck() {
@@ -194,7 +212,13 @@ function Task({ item, onRemoveTask, darkMode }) {
           status={item.status}
           onChange={() => handleCheck()}
         />
-        <div className={darkMode === true ? "custom-checkbox dark-checkbox" : "custom-checkbox" }>
+        <div
+          className={
+            darkMode === true
+              ? "custom-checkbox dark-checkbox"
+              : "custom-checkbox"
+          }
+        >
           <div
             className={
               darkMode === true ? "tick-container dark-tick" : "tick-container"
@@ -204,7 +228,7 @@ function Task({ item, onRemoveTask, darkMode }) {
           </div>
         </div>
       </label>
-      <p type="text" name="task-text" className={item.text}>
+      <p type="text" name="task-text" className={onHandleDarkText(item.text)}>
         {item.task}
       </p>
       <img
