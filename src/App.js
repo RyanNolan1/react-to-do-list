@@ -1,12 +1,38 @@
 import moonIcon from "./images/icon-moon.svg";
+import sunIcon from "./images/icon-sun.svg";
 import cross from "./images/icon-cross.svg";
+import check from "./images/icon-check.svg";
 import { useState, useEffect } from "react";
 
 export default function App() {
   const [items, setItems] = useState([]);
   const [filteredItems, setFilteredItems] = useState(items);
+  const [activeButton, setActiveButton] = useState(null);
+  const [isDarkMode, setIsDarkMode] = useState(false);
 
-  console.log(items)
+  function handleButtonClick(buttonId) {
+    setActiveButton(buttonId);
+  }
+
+  function handleDarkText(checkedOrNot) {
+    if (isDarkMode === true && checkedOrNot === "checked-text") {
+      return (checkedOrNot = "dark-checked-text");
+    }
+
+    if (isDarkMode === false && checkedOrNot === "checked-text") {
+      return (checkedOrNot = "checked-text");
+    }
+  }
+
+  function handleDarkMode() {
+    setIsDarkMode(!isDarkMode);
+
+    if (isDarkMode) {
+      document.body.style.background = "hsl(0, 0%, 98%)";
+    } else {
+      document.body.style.background = "#171823";
+    }
+  }
 
   useEffect(() => {
     setFilteredItems(items);
@@ -33,38 +59,63 @@ export default function App() {
   }
 
   function removeCompletedTasks() {
-    const filteredArray = items.filter((item) => item.status !== "Complete")
+    const filteredArray = items.filter((item) => item.status !== "Complete");
     setItems(filteredArray);
     setFilteredItems(filteredArray);
   }
 
   return (
     <div className="app">
-      <Header />
-      <div className="tasks-container">
-        <AddTask onAddItems={handleAddItems} />
-        <ToDoList handleRemoveTask={handleRemoveTask} items={filteredItems} />
-        <CountClear onRemoveCompletedTasks={removeCompletedTasks} itemCount={items.length} />
-        <Filter onFilterItems={handleFilter} />
+      <Header onDarkMode={handleDarkMode} darkMode={isDarkMode} />
+      <div
+        className={
+          isDarkMode === true ? "dark-tasks-container" : "tasks-container"
+        }
+      >
+        <AddTask darkMode={isDarkMode} onAddItems={handleAddItems} />
+        <ToDoList
+          onHandleDarkText={handleDarkText}
+          darkMode={isDarkMode}
+          handleRemoveTask={handleRemoveTask}
+          items={filteredItems}
+        />
+        <CountClear
+          darkMode={isDarkMode}
+          onRemoveCompletedTasks={removeCompletedTasks}
+          itemCount={items.length}
+          handleButtonClick={handleButtonClick}
+        />
+        <Filter
+          darkMode={isDarkMode}
+          handleButtonClick={handleButtonClick}
+          activeButton={activeButton}
+          onFilterItems={handleFilter}
+        />
       </div>
     </div>
   );
 }
 
-function Header() {
+function Header({ onDarkMode, darkMode }) {
   return (
-    <header>
+    <header className={darkMode === false ? "bg-light" : "bg-dark"}>
       <div className="container title-toggle">
         <h1>T O D O</h1>
-        <img src={moonIcon} alt="Moon Icon" />
+        <button
+          onClick={() => {
+            onDarkMode();
+          }}
+        >
+          <img src={darkMode === false ? moonIcon : sunIcon} alt="Moon Icon" />
+        </button>
       </div>
     </header>
   );
 }
 
-function ToDoList({ items, handleRemoveTask }) {
+function ToDoList({ onHandleDarkText, items, handleRemoveTask, darkMode }) {
   return (
-    <div>
+    <div className="tasks-list">
       {items.map((item, index) => (
         <Task
           onRemoveTask={handleRemoveTask}
@@ -72,13 +123,15 @@ function ToDoList({ items, handleRemoveTask }) {
           task={item.task}
           id={index}
           key={item.id}
+          darkMode={darkMode}
+          onHandleDarkText={onHandleDarkText}
         ></Task>
       ))}
     </div>
   );
 }
 
-function AddTask({ onAddItems }) {
+function AddTask({ onAddItems, darkMode }) {
   const [task, setTask] = useState("");
   const [id, setId] = useState(0);
 
@@ -86,7 +139,7 @@ function AddTask({ onAddItems }) {
     e.preventDefault();
 
     if (task) {
-      const newItem = { id: id, task, status: "Active", checked:false };
+      const newItem = { id: id, task, status: "Active", checked: false };
       onAddItems(newItem);
       setTask("");
       setId(id + 1);
@@ -94,7 +147,12 @@ function AddTask({ onAddItems }) {
   }
 
   return (
-    <form className="container add-task" onSubmit={handleSubmit}>
+    <form
+      className={
+        darkMode === true ? "container add-task dark" : "container add-task"
+      }
+      onSubmit={handleSubmit}
+    >
       <label htmlFor="add-task-checkbox">
         <input
           id="add-task-checkbox"
@@ -102,9 +160,18 @@ function AddTask({ onAddItems }) {
           name="add-task-checkbox"
           className="checkbox"
         />
-        <div className="custom-checkbox"></div>
+        <div
+          className={
+            darkMode === true
+              ? "add-custom-checkbox dark-checkbox"
+              : "add-custom-checkbox"
+          }
+        ></div>
       </label>
       <input
+        className={
+          darkMode === true ? "add-task-input dark-input" : "add-task-input"
+        }
         id="add-task-text"
         type="text"
         name="add-task-text"
@@ -118,25 +185,50 @@ function AddTask({ onAddItems }) {
   );
 }
 
-function Task({ item, onRemoveTask }) {
+function Task({ item, onRemoveTask, darkMode, onHandleDarkText }) {
+  const [isChecked, setIsChecked] = useState(false);
+
   function handleCheck() {
-    item.checked = item.checked === false ? true : false;
-    item.status = item.check === false ? "Active" : "Complete";
+    item.checked = isChecked ? false : true;
+    item.status = isChecked ? "Active" : "Complete";
+    item.text = isChecked ? "unchecked-text" : "checked-text";
+    setIsChecked(!isChecked);
   }
 
   return (
-    <div className="container task" key={item.index}>
+    <div
+      className={
+        darkMode === true ? "container task dark-task" : "container task"
+      }
+      key={item.index}
+    >
       <label htmlFor={item.index} className="checkbox-label">
         <input
           id={item.index}
           type="checkbox"
           name="task-checkbox"
           className="checkbox"
-          onClick={() => handleCheck()}
+          checked={item.checked}
+          status={item.status}
+          onChange={() => handleCheck()}
         />
-        <div className="custom-checkbox"></div>
+        <div
+          className={
+            darkMode === true
+              ? "custom-checkbox dark-checkbox"
+              : "custom-checkbox"
+          }
+        >
+          <div
+            className={
+              darkMode === true ? "tick-container dark-tick" : "tick-container"
+            }
+          >
+            {item.checked === true && <img src={check} alt="tick" />}
+          </div>
+        </div>
       </label>
-      <p type="text" name="task-text">
+      <p type="text" name="task-text" className={onHandleDarkText(item.text)}>
         {item.task}
       </p>
       <img
@@ -149,21 +241,74 @@ function Task({ item, onRemoveTask }) {
   );
 }
 
-function CountClear({ itemCount, onRemoveCompletedTasks }) {
+function CountClear({
+  itemCount,
+  onRemoveCompletedTasks,
+  handleButtonClick,
+  darkMode,
+}) {
   return (
-    <div className="container count-clear">
-      <p className="item-count">{itemCount} Items Left</p>
-      <button onClick={ onRemoveCompletedTasks }>Clear Completed</button>
+    <div
+      className={
+        darkMode === true
+          ? "container count-clear dark"
+          : "container count-clear"
+      }
+    >
+      <p className="item-count">{itemCount} Items Left </p>
+      <button
+        className={darkMode === true ? "darkmode-button-hover" : undefined}
+        onClick={() => {
+          onRemoveCompletedTasks();
+          handleButtonClick(1);
+        }}
+      >
+        Clear Completed
+      </button>
     </div>
   );
 }
 
-function Filter({ onFilterItems }) {
+function Filter({ onFilterItems, handleButtonClick, activeButton, darkMode }) {
   return (
-    <div className="container filter">
-      <button onClick={() => onFilterItems()}>All</button>
-      <button onClick={() => onFilterItems("Active")}>Active</button>
-      <button onClick={() => onFilterItems("Complete")}>Completed</button>
+    <div
+      className={
+        darkMode === true ? "container filter dark" : "container filter"
+      }
+    >
+      <button
+        onClick={() => {
+          onFilterItems();
+          handleButtonClick(1);
+        }}
+        className={
+          activeButton === 1 ? "filter-buttons active" : "filter-buttons"
+        }
+      >
+        All
+      </button>
+      <button
+        onClick={() => {
+          onFilterItems("Active");
+          handleButtonClick(2);
+        }}
+        className={
+          activeButton === 2 ? "filter-buttons active" : "filter-buttons"
+        }
+      >
+        Active
+      </button>
+      <button
+        onClick={() => {
+          onFilterItems("Complete");
+          handleButtonClick(3);
+        }}
+        className={
+          activeButton === 3 ? "filter-buttons active" : "filter-buttons"
+        }
+      >
+        Completed
+      </button>
     </div>
   );
 }
