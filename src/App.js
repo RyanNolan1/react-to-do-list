@@ -148,7 +148,7 @@ function AddTask({ onAddItems, darkMode }) {
           name="add-task-checkbox"
           className="checkbox"
         />
-        <div className="add-custom-checkbox"></div>
+          <div className={darkMode === true ? "add-custom-checkbox dark-checkbox" : "add-custom-checkbox" }></div>
       </label>
       <input
         className={
@@ -194,7 +194,7 @@ function Task({ item, onRemoveTask, darkMode }) {
           status={item.status}
           onChange={() => handleCheck()}
         />
-        <div className="custom-checkbox">
+        <div className={darkMode === true ? "custom-checkbox dark-checkbox" : "custom-checkbox" }>
           <div
             className={
               darkMode === true ? "tick-container dark-tick" : "tick-container"
