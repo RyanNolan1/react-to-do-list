@@ -31,15 +31,6 @@ p {
   color: #3a7cfd;
 }
 
-button:hover {
-  cursor: pointer;
-  color: #494c6b;
-}
-
-.darkmode-button-hover:hover {
-  color: white;
-}
-
 header {
   background-repeat: no-repeat;
   background-size: cover;
@@ -113,10 +104,6 @@ h1 {
   background-color: #25273d;
 }
 
-.dark button:hover {
-  color: white;
-}
-
 .count-clear {
   align-items: center;
   justify-content: space-between;
@@ -148,15 +135,11 @@ input[type="text"] {
 }
 
 .dark-input {
-  color:#C8CBE7;
+  color: #c8cbe7;
 }
 
 input[type="text"]::placeholder {
   color: #9495a5;
-}
-
-input[type="checkbox"]:hover {
-  cursor: pointer;
 }
 
 input:focus {
@@ -178,10 +161,6 @@ input:focus {
 .dark-tasks-container {
   filter: drop-shadow(0px 0px 20px rgba(0, 0, 0, 0.494));
   padding: 0 1rem;
-}
-
-.cross:hover {
-  cursor: pointer;
 }
 
 .checkbox {
@@ -211,26 +190,6 @@ input:focus {
   align-items: center;
 }
 
-
-.custom-checkbox:hover {
-  background: rgb(85, 221, 255);
-  background: -moz-linear-gradient(
-    0deg,
-    rgba(85, 221, 255, 1) 0%,
-    rgba(192, 88, 243, 1) 100%
-  );
-  background: -webkit-linear-gradient(
-    0deg,
-    rgba(85, 221, 255, 1) 0%,
-    rgba(192, 88, 243, 1) 100%
-  );
-  background: linear-gradient(
-    0deg,
-    rgba(85, 221, 255, 1) 0%,
-    rgba(192, 88, 243, 1) 100%
-  );
-}
-
 .tick-container {
   background-color: white;
   width: 20px;
@@ -243,11 +202,6 @@ input:focus {
 
 .dark-tick {
   background: #25273d;
-}
-
-.custom-checkbox:hover {
-  border-color: #00b3ee;
-  cursor: pointer;
 }
 
 .checkbox:checked + .custom-checkbox {
@@ -344,5 +298,50 @@ input:focus {
 
   input[type="text"] {
     font-size: 1rem;
+  }
+
+  button:hover {
+    cursor: pointer;
+    color: #494c6b;
+  }
+
+  .darkmode-button-hover:hover {
+    color: white;
+  }
+
+  .dark button:hover {
+    color: white;
+  }
+
+  .custom-checkbox:hover {
+    background: rgb(85, 221, 255);
+    background: -moz-linear-gradient(
+      0deg,
+      rgba(85, 221, 255, 1) 0%,
+      rgba(192, 88, 243, 1) 100%
+    );
+    background: -webkit-linear-gradient(
+      0deg,
+      rgba(85, 221, 255, 1) 0%,
+      rgba(192, 88, 243, 1) 100%
+    );
+    background: linear-gradient(
+      0deg,
+      rgba(85, 221, 255, 1) 0%,
+      rgba(192, 88, 243, 1) 100%
+    );
+  }
+
+  .custom-checkbox:hover {
+    border-color: #00b3ee;
+    cursor: pointer;
+  }
+
+  .cross:hover {
+    cursor: pointer;
+  }
+
+  input[type="checkbox"]:hover {
+    cursor: pointer;
   }
 }
