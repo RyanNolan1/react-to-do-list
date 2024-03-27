@@ -344,5 +344,10 @@ input:focus {
   input[type="checkbox"]:hover {
     cursor: pointer;
   }
-}
 
+  .filter {
+    margin-top: -64px;
+    border-radius: 0 0 5px 5px;
+    background: none;
+  }
+}
